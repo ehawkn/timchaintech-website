@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Timchain Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(180deg, var(--black) 0%, var(--gray-900) 100%);
+        }
+        
+        .about-content {
+            padding: 6rem 0;
+        }
+        
+        .content-section {
+            margin-bottom: 6rem;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .content-label {
+            font-size: 0.75rem;
+            color: var(--bitcoin);
+            letter-spacing: 2px;
+            font-weight: 700;
+            position: sticky;
+            top: 120px;
+        }
+        
+        .content-text {
+            color: var(--gray-200);
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+        
+        .content-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .content-text strong {
+            color: var(--white);
+            font-weight: 700;
+        }
+        
+        .vision-box {
+            background: var(--gray-800);
+            border-left: 4px solid var(--bitcoin);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .vision-box h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--bitcoin);
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            padding: 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .tech-item:hover {
+            border-color: var(--bitcoin);
+            transform: translateY(-5px);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-name {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-desc {
+            font-size: 0.85rem;
+            color: var(--gray-400);
+        }
+        
+        @media (max-width: 968px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-label {
+                position: static;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">TIMCHAIN.TECH</span>
+                <span class="logo-bracket">]</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">HOME</a>
+                <a href="about.html" class="nav-link active">ABOUT</a>
+                <a href="solutions.html" class="nav-link">SOLUTIONS</a>
+                <a href="requests.html" class="nav-link">REQUESTS</a>
+                <a href="contact.html" class="nav-link">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <span class="section-tag">// ABOUT TIMCHAIN TECH</span>
+                <h1 class="section-title">Reclaiming Satoshi's<br><span class="gradient-text">Original Vision</span></h1>
+            </div>
+        </section>
+
+        <section class="about-content">
+            <div class="container">
+                <div class="content-section">
+                    <div class="content-grid">
+                        <div class="content-label">// THE ORIGIN</div>
+                        <div class="content-text">
+                            <p>
+                                In Satoshi Nakamoto's original whitepaper and early communications, Bitcoin was referred to as a <strong>"timechain"</strong> - a chain of timestamped blocks that creates an immutable historical record. This wasn't just semantic choice; it captured something fundamental about what blockchains actually do: they create verifiable, ordered time.
+                            </p>
+                            <p>
+                                Timchain Tech was born from a desire to build on this original insight. We're not chasing trends or buzzwords. We're engineering solutions that leverage blockchains for what they truly are: <strong>self-organizing, cryptographically secured databases</strong> that allow us to establish consensus about the state and ordering of information across untrusted networks.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="content-grid">
+                        <div class="content-label">// THE VISION</div>
+                        <div class="content-text">
+                            <div class="vision-box">
+                                <h3>Internet Capital Markets Meet Blockchain Infrastructure</h3>
+                                <p>
+                                    We believe that the intersection of internet capital markets and blockchain technology creates unprecedented opportunities for valuing, trading, and securing information itself.
+                                </p>
+                            </div>
+                            <p>
+                                Traditional databases require trust in a central authority. Blockchains flip this model: they use <strong>economic incentives and cryptographic proofs</strong> to create databases that organize themselves. No central authority. No single point of failure. Just mathematics, incentives, and consensus.
+                            </p>
+                            <p>
+                                When you combine this with internet capital markets - the ability to create, trade, and value tokens representing anything - you get something powerful: <strong>a global infrastructure for valuing information</strong> in ways that were previously impossible.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="content-grid">
+                        <div class="content-label">// THE APPROACH</div>
+                        <div class="content-text">
+                            <p>
+                                We don't build for hype. We build from <strong>first principles</strong>:
+                            </p>
+                            <p>
+                                <strong>1. Start with the problem.</strong> What coordination failure exists? What trust assumption can we eliminate? What information needs to be verifiable and tradeable?
+                            </p>
+                            <p>
+                                <strong>2. Choose the right chain.</strong> Bitcoin for maximum security and decentralization. Solana for high throughput and composability. Each has its place, and we use them appropriately.
+                            </p>
+                            <p>
+                                <strong>3. Build composable primitives.</strong> Create legos, not monoliths. Every solution should be a building block for future innovation.
+                            </p>
+                            <p>
+                                <strong>4. Align incentives.</strong> Economics matter. Design token mechanics and reward structures that create sustainable, self-reinforcing systems.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="content-grid">
+                        <div class="content-label">// THE TECH STACK</div>
+                        <div class="content-text">
+                            <p>We work with cutting-edge blockchain infrastructure and developer tools:</p>
+                            
+                            <div class="tech-stack">
+                                <div class="tech-item">
+                                    <div class="tech-icon">₿</div>
+                                    <div class="tech-name">Bitcoin</div>
+                                    <div class="tech-desc">L1 & L2 Solutions</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">◎</div>
+                                    <div class="tech-name">Solana</div>
+                                    <div class="tech-desc">High-performance DApps</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">⚡</div>
+                                    <div class="tech-name">Lightning</div>
+                                    <div class="tech-desc">Instant Settlements</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">🔗</div>
+                                    <div class="tech-name">Anchor</div>
+                                    <div class="tech-desc">Solana Framework</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">🦀</div>
+                                    <div class="tech-name">Rust</div>
+                                    <div class="tech-desc">Systems Programming</div>
+                                </div>
+                                <div class="tech-item">
+                                    <div class="tech-icon">📜</div>
+                                    <div class="tech-name">Smart Contracts</div>
+                                    <div class="tech-desc">On-chain Logic</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-section">
+                    <div class="content-grid">
+                        <div class="content-label">// WHO WE SERVE</div>
+                        <div class="content-text">
+                            <p>
+                                <strong>Organizations seeking blockchain solutions:</strong> If you need to solve coordination problems, establish verifiable data provenance, or create new market mechanisms, we can help you understand if blockchain is the right tool and how to implement it properly.
+                            </p>
+                            <p>
+                                <strong>Technical collaborators:</strong> If you're a developer, researcher, or technologist interested in working at the intersection of blockchain infrastructure and internet capital markets, let's build together.
+                            </p>
+                            <p>
+                                <strong>The curious:</strong> If you want to understand blockchain technology beyond the hype - what it actually does, how it works, and when it's appropriate - we're here to educate and inform.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-box" style="margin-top: 4rem;">
+                    <div class="cta-content">
+                        <span class="section-tag">// LET'S CONNECT</span>
+                        <h2 class="cta-title">Ready to Build?</h2>
+                        <p class="cta-text">
+                            Whether you have a specific project in mind or just want to explore what's possible with blockchain infrastructure, I'm always interested in talking with smart people about hard problems.
+                        </p>
+                        <div class="cta-buttons">
+                            <a href="contact.html" class="btn btn-primary">
+                                <span class="btn-text">GET IN TOUCH</span>
+                                <span class="btn-arrow">→</span>
+                            </a>
+                            <a href="solutions.html" class="btn btn-secondary">
+                                <span class="btn-text">VIEW SOLUTIONS</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="cta-visual">
+                        <div class="blockchain-viz">
+                            <div class="block"></div>
+                            <div class="block" style="animation-delay: 0.2s;"></div>
+                            <div class="block" style="animation-delay: 0.4s;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-logo">
+                        <span class="logo-bracket">[</span>
+                        <span class="logo-text">TIMCHAIN.TECH</span>
+                        <span class="logo-bracket">]</span>
+                    </div>
+                    <p class="footer-tagline">Building on the timechain, for the future.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <div class="footer-column">
+                            <h4>Navigate</h4>
+                            <a href="index.html">Home</a>
+                            <a href="about.html">About</a>
+                            <a href="solutions.html">Solutions</a>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Connect</h4>
+                            <a href="contact.html">Contact</a>
+                            <a href="requests.html">Requests</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Timchain Tech. Building on Satoshi's vision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
