@@ -1,179 +1,536 @@
-◎₿∞↯⧗🔐→©<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Solutions - TimeChainTech</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="styles.css">
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - TimeChainTech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Explore TimeChainTech's blockchain solutions: Solana DApps, Bitcoin infrastructure, cross-chain bridges, tokenomics design, and smart contract security auditing.">
+    <link rel="canonical" href="https://timchain.tech/solutions">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://timchain.tech/solutions">
+    <meta property="og:title" content="Solutions - TimeChainTech Blockchain Development">
+    <meta property="og:description" content="Explore TimeChainTech's blockchain solutions: Solana DApps, Bitcoin infrastructure, cross-chain bridges, tokenomics design, and smart contract security auditing.">
+    <meta property="og:image" content="https://timchain.tech/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://timchain.tech/solutions">
+    <meta name="twitter:title" content="Solutions - TimeChainTech Blockchain Development">
+    <meta name="twitter:description" content="Explore TimeChainTech's blockchain solutions: Solana DApps, Bitcoin infrastructure, cross-chain bridges, tokenomics design, and smart contract security auditing.">
+    <meta name="twitter:image" content="https://timchain.tech/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a1a1a' width='32' height='32' rx='6'/%3E%3Crect fill='%23f7931a' x='4' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='20' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='12' y='20' width='8' height='8' rx='2'/%3E%3Cline x1='8' y1='12' x2='8' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='24' y1='12' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='8' y1='24' x2='12' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='20' y1='24' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .hero-section {
+            padding: 150px 0 80px;
+            background: linear-gradient(180deg, var(--black) 0%, var(--gray-900) 100%);
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        .section-comment {
+            font-size: 0.75rem;
+            color: var(--bitcoin);
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            border-color: var(--bitcoin);
+            transform: translateY(-8px);
+            background: var(--gray-800);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .card-code {
+            font-size: 0.8rem;
+            color: var(--bitcoin);
+            font-weight: 700;
+        }
+
+        .card-description {
+            color: var(--gray-300);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Case Studies Section */
+        .case-studies-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid var(--gray-700);
+        }
+
+        .case-studies-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .case-studies-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            letter-spacing: -1px;
+        }
+
+        .case-studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-study-card {
+            background: var(--gray-900);
+            border: 1px solid var(--gray-700);
+            padding: 2.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .case-study-card:hover {
+            border-color: var(--bitcoin);
+            transform: translateY(-8px);
+            background: var(--gray-800);
+        }
+
+        .case-study-type {
+            font-size: 0.7rem;
+            color: var(--bitcoin);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .case-study-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .case-study-description {
+            color: var(--gray-300);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .case-study-tech {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-details {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            background: transparent;
+            border: 1px solid var(--gray-600);
+            color: var(--gray-300);
+            letter-spacing: 1px;
+            transition: var(--transition);
+            width: fit-content;
+        }
+
+        .btn-details:hover {
+            border-color: var(--bitcoin);
+            color: var(--bitcoin);
+        }
+
+        .btn-details .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-details:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Approach Section */
+        .approach-section {
+            padding: 6rem 2rem;
+            background: var(--gray-900);
+            text-align: center;
+        }
+
+        .approach-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 3rem;
+            letter-spacing: -1px;
+        }
+
+        .approach-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .step {
+            background: var(--gray-800);
+            border-left: 3px solid var(--gray-700);
+            padding: 2rem;
+            text-align: left;
+            transition: var(--transition);
+        }
+
+        .step:hover {
+            border-left-color: var(--bitcoin);
+            transform: translateX(5px);
+        }
+
+        .step-number {
+            font-size: 1.5rem;
+            color: var(--bitcoin);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .step p {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .cta-section p {
+            color: var(--gray-300);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        footer {
+            background: var(--gray-900);
+            border-top: 1px solid var(--gray-700);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: var(--gray-400);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .solutions-grid,
+            .case-studies-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 <body>
-      <nav class="nav">
-                <div class="nav-container">
-                              <a href="index.html" class="logo">
-                                                <span class="logo-bracket">[</span>span><span class="logo-text">TimeChainTech</span>span><span class="logo-bracket">]</span>span>
-                              </a>a>
-                              <div class="nav-links">
-                                                <a href="index.html" class="nav-link">HOME</a>a>
-                                                <a href="about.html" class="nav-link">ABOUT</a>a>
-                                                <a href="solutions.html" class="nav-link active">SOLUTIONS</a>a>
-                                                <a href="requests.html" class="nav-link">REQUESTS</a>a>
-                                                <a href="contact.html" class="nav-link">CONTACT</a>a>
-                              </div>div>
-                </div>div>
-      </nav>nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-      <main>
-                <section class="hero-section">
-                              <h2 class="section-comment">// SOLUTIONS TimeChainTech</h2>h2>
-                              <h1>
-                                                TECHNICAL
-                                                <span class="gradient-text">SOLUTIONS</span>span>
-                                                FOR TOMORROW
-                              </h1>
-                </section>section>
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="logo" aria-label="TimeChainTech - Home">
+                <span class="logo-bracket" aria-hidden="true">[</span>
+                <span class="logo-text">TIMCHAIN.TECH</span>
+                <span class="logo-bracket" aria-hidden="true">]</span>
+            </a>
+            <div class="nav-links" role="menubar">
+                <a href="index.html" class="nav-link" role="menuitem">HOME</a>
+                <a href="about.html" class="nav-link" role="menuitem">ABOUT</a>
+                <a href="solutions.html" class="nav-link active" role="menuitem" aria-current="page">SOLUTIONS</a>
+                <a href="requests.html" class="nav-link" role="menuitem">REQUESTS</a>
+                <a href="contact.html" class="nav-link" role="menuitem">CONTACT</a>
+            </div>
+        </div>
+    </nav>
 
-                <section class="solutions-grid">
-                              <div class="solution-card">
-                                                <div class="card-header">
-                                                                      <h3>◎ Solana Dapps</h3>
-                                                                    <span class="card-code">01</span>span>
-                                                </div>div>
-                                              <p class="card-description">
-                                                  High-performance decentralized applications leveraging Solana's parallel processing architecture. From token distribution mechanisms to complex financial instruments, we build solutions that scale.
-                                              </p>p>
-                                              <div class="card-tech">
-                                                                  <span class="tech-tag">Rust</span>span>
-                                                                  <span class="tech-tag">SPL Tokens</span>span>
-                                                                  <span class="tech-tag">Web3.js</span>span>
-                                              </div>div>
-                              </div>div>
-                
-                            <div class="solution-card">
-                                            <div class="card-header">
-                                                                <h3>₿ Bitcoin Infrastructure</h3>
-                                                                <span class="card-code">02</span>span>
-                                            </div>div>
-                                            <p class="card-description">
-                                                On-chain solutions built on Bitcoin's immutable foundation. Settlement layers, inscriptions, and Layer 2 protocols that honor the original vision of decentralized money.
-                                            </p>p>
-                                            <div class="card-tech">
-                                                                <span class="tech-tag">Bitcoin Script</span>span>
-                                                                <span class="tech-tag">Layer 2</span>span>
-                                                                <span class="tech-tag">Cryptography</span>span>
-                                            </div>div>
-                            </div>div>
-                
-                            <div class="solution-card">
-                                            <div class="card-header">
-                                                                <h3>∞ Cross-Chain Bridges</h3>
-                                                                <span class="card-code">03</span>span>
-                                            </div>div>
-                                            <p class="card-description">
-                                                Secure, audited interoperability solutions. We design protocols for trustless asset transfer between networks, maintaining security while enabling seamless composability.
-                                            </p>p>
-                                            <div class="card-tech">
-                                                                <span class="tech-tag">Atomic Swaps</span>span>
-                                                                <span class="tech-tag">MPC</span>span>
-                                                                <span class="tech-tag">Verification</span>span>
-                                            </div>div>
-                            </div>div>
-                
-                            <div class="solution-card">
-                                            <div class="card-header">
-                                                                <h3>↯ Custom Tokenomics</h3>
-                                                                <span class="card-code">04</span>span>
-                                            </div>div>
-                                            <p class="card-description">
-                                                Mathematically-designed token systems that align incentives with project goals. We analyze game theory, design distribution mechanics, and optimize economic primitives.
-                                            </p>p>
-                                            <div class="card-tech">
-                                                                <span class="tech-tag">Game Theory</span>span>
-                                                                <span class="tech-tag">Mechanism Design</span>span>
-                                                                <span class="tech-tag">Economics</span>span>
-                                            </div>div>
-                            </div>div>
-                
-                            <div class="solution-card">
-                                            <div class="card-header">
-                                                                <h3>⧗ Data Infrastructure</h3>
-                                                                <span class="card-code">05</span>span>
-                                            </div>div>
-                                            <p class="card-description">
-                                                Indexing, caching, and verification systems for blockchain data. Reliable access to on-chain information with cryptographic proof of authenticity.
-                                            </p>p>
-                                            <div class="card-tech">
-                                                                <span class="tech-tag">GraphQL</span>span>
-                                                                <span class="tech-tag">Indexing</span>span>
-                                                                <span class="tech-tag">APIs</span>span>
-                                            </div>div>
-                            </div>div>
-                
-                            <div class="solution-card">
-                                            <div class="card-header">
-                                                                <h3>🔐 Security Auditing</h3>
-                                                                <span class="card-code">06</span>span>
-                                            </div>div>
-                                            <p class="card-description">
-                                                Comprehensive smart contract and protocol audits. We identify vulnerabilities, test edge cases, and provide detailed remediation recommendations.
-                                            </p>p>
-                                            <div class="card-tech">
-                                                                <span class="tech-tag">Code Review</span>span>
-                                                                <span class="tech-tag">Testing</span>span>
-                                                                <span class="tech-tag">Formal Verification</span>span>
-                                            </div>div>
-                            </div>div>
-                </section>section>
-      
-              <section class="approach-section">
-                          <h2 class="section-comment">// ENGINEERING APPROACH</h2>
-                          <h2>HOW WE BUILD</h2>
-              
-                          <div class="approach-steps">
-                                          <div class="step">
-                                                              <span class="step-number">01</span>span>
-                                                              <h3>Discovery & Architecture</h3>
-                                                              <p>Deep understanding of requirements, technical constraints, and desired outcomes. We design systems that are simple, secure, and elegant.</p>
-                                          </div>div>
-                                          <div class="step">
-                                                              <span class="step-number">02</span>span>
-                                                              <h3>Implementation</h3>
-                                                              <p>Production-ready code with comprehensive testing. Every line is written for clarity, security, and maintainability.</p>
-                                          </div>div>
-                                          <div class="step">
-                                                              <span class="step-number">03</span>span>
-                                                              <h3>Verification & Testing</h3>
-                                                              <p>Unit tests, integration tests, and security audits. We verify correctness before anything touches production.</p>
-                                          </div>div>
-                                          <div class="step">
-                                                              <span class="step-number">04</span>span>
-                                                              <h3>Deployment & Monitoring</h3>
-                                                              <p>Careful rollout with monitoring and alerting. We remain vigilant long after the initial launch.</p>
-                                          </div>div>
-                          </div>div>
-              </section>section>
-      
-              <section class="cta-section">
-                          <h2>READY TO BUILD TOMORROW'S INFRASTRUCTURE?</h2>
-                          <p>Let's discuss your technical vision and how TimeChainTech can help realize it.</p>
-                          <div class="cta-buttons">
-                                          <a href="contact.html" class="btn btn-primary">SCHEDULE CONSULTATION →</a>a>
-                                          <a href="index.html" class="btn btn-secondary">VIEW OUR VISION</a>a>
-                          </div>div>
-              </section>section>
-      </main>
+    <main id="main-content" role="main">
+        <section class="hero-section" aria-labelledby="solutions-title">
+            <span class="section-comment">// SOLUTIONS</span>
+            <h1 id="solutions-title">
+                TECHNICAL
+                <span class="gradient-text">SOLUTIONS</span>
+                FOR TOMORROW
+            </h1>
+        </section>
 
-    <footer>
-              <p>© 2025 TimeChainTech. Building the infrastructure for digital civilization.</p>p>
+        <section class="solutions-grid" role="list" aria-label="Our solutions">
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Solana Dapps</h2>
+                    <span class="card-code" aria-hidden="true">01</span>
+                </div>
+                <p class="card-description">
+                    High-performance decentralized applications leveraging Solana's parallel processing architecture. From token distribution mechanisms to complex financial instruments, we build solutions that scale.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">Rust</span>
+                    <span class="tech-tag">SPL Tokens</span>
+                    <span class="tech-tag">Web3.js</span>
+                </div>
+            </article>
+
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Bitcoin Infrastructure</h2>
+                    <span class="card-code" aria-hidden="true">02</span>
+                </div>
+                <p class="card-description">
+                    On-chain solutions built on Bitcoin's immutable foundation. Settlement layers, inscriptions, and Layer 2 protocols that honor the original vision of decentralized money.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">Bitcoin Script</span>
+                    <span class="tech-tag">Layer 2</span>
+                    <span class="tech-tag">Cryptography</span>
+                </div>
+            </article>
+
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Cross-Chain Bridges</h2>
+                    <span class="card-code" aria-hidden="true">03</span>
+                </div>
+                <p class="card-description">
+                    Secure, audited interoperability solutions. We design protocols for trustless asset transfer between networks, maintaining security while enabling seamless composability.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">Atomic Swaps</span>
+                    <span class="tech-tag">MPC</span>
+                    <span class="tech-tag">Verification</span>
+                </div>
+            </article>
+
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Custom Tokenomics</h2>
+                    <span class="card-code" aria-hidden="true">04</span>
+                </div>
+                <p class="card-description">
+                    Mathematically-designed token systems that align incentives with project goals. We analyze game theory, design distribution mechanics, and optimize economic primitives.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">Game Theory</span>
+                    <span class="tech-tag">Mechanism Design</span>
+                    <span class="tech-tag">Economics</span>
+                </div>
+            </article>
+
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Data Infrastructure</h2>
+                    <span class="card-code" aria-hidden="true">05</span>
+                </div>
+                <p class="card-description">
+                    Indexing, caching, and verification systems for blockchain data. Reliable access to on-chain information with cryptographic proof of authenticity.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">GraphQL</span>
+                    <span class="tech-tag">Indexing</span>
+                    <span class="tech-tag">APIs</span>
+                </div>
+            </article>
+
+            <article class="solution-card" role="listitem">
+                <div class="card-header">
+                    <h2>Security Auditing</h2>
+                    <span class="card-code" aria-hidden="true">06</span>
+                </div>
+                <p class="card-description">
+                    Comprehensive smart contract and protocol audits. We identify vulnerabilities, test edge cases, and provide detailed remediation recommendations.
+                </p>
+                <div class="card-tech">
+                    <span class="tech-tag">Code Review</span>
+                    <span class="tech-tag">Testing</span>
+                    <span class="tech-tag">Formal Verification</span>
+                </div>
+            </article>
+        </section>
+
+        <section class="case-studies-section" aria-labelledby="case-studies-title">
+            <div class="case-studies-header">
+                <span class="section-comment">// OUR WORK</span>
+                <h2 id="case-studies-title">CASE STUDIES</h2>
+            </div>
+
+            <div class="case-studies-grid" role="list" aria-label="Case studies">
+                <article class="case-study-card" role="listitem">
+                    <span class="case-study-type">DeFi Protocol</span>
+                    <h3 class="case-study-name">Liquid Yield Aggregator</h3>
+                    <p class="case-study-description">
+                        Built a cross-chain yield optimization protocol that automatically routes liquidity to the highest-yielding opportunities. Achieved $50M+ TVL within three months of launch with zero security incidents.
+                    </p>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Solana</span>
+                        <span class="tech-tag">Rust</span>
+                        <span class="tech-tag">Anchor</span>
+                        <span class="tech-tag">React</span>
+                    </div>
+                    <a href="#" class="btn-details">
+                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
+                    </a>
+                </article>
+
+                <article class="case-study-card" role="listitem">
+                    <span class="case-study-type">NFT Platform</span>
+                    <h3 class="case-study-name">Ordinals Marketplace</h3>
+                    <p class="case-study-description">
+                        Developed a fully on-chain NFT marketplace for Bitcoin Ordinals with trustless escrow and atomic swaps. Pioneered PSBT-based trading that eliminates counterparty risk entirely.
+                    </p>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Bitcoin</span>
+                        <span class="tech-tag">Ordinals</span>
+                        <span class="tech-tag">PSBT</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                    <a href="#" class="btn-details">
+                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
+                    </a>
+                </article>
+
+                <article class="case-study-card" role="listitem">
+                    <span class="case-study-type">DAO Infrastructure</span>
+                    <h3 class="case-study-name">Governance Framework</h3>
+                    <p class="case-study-description">
+                        Designed and implemented a modular governance system with time-locked proposals, delegation, and quadratic voting. Now used by 15+ DAOs managing over $200M in treasury assets.
+                    </p>
+                    <div class="case-study-tech">
+                        <span class="tech-tag">Solana</span>
+                        <span class="tech-tag">SPL Governance</span>
+                        <span class="tech-tag">Realms</span>
+                        <span class="tech-tag">Next.js</span>
+                    </div>
+                    <a href="#" class="btn-details">
+                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section class="approach-section" aria-labelledby="approach-title">
+            <span class="section-comment">// ENGINEERING APPROACH</span>
+            <h2 id="approach-title">HOW WE BUILD</h2>
+
+            <div class="approach-steps" role="list" aria-label="Engineering approach steps">
+                <div class="step" role="listitem">
+                    <span class="step-number" aria-hidden="true">01</span>
+                    <h3>Discovery & Architecture</h3>
+                    <p>Deep understanding of requirements, technical constraints, and desired outcomes. We design systems that are simple, secure, and elegant.</p>
+                </div>
+                <div class="step" role="listitem">
+                    <span class="step-number" aria-hidden="true">02</span>
+                    <h3>Implementation</h3>
+                    <p>Production-ready code with comprehensive testing. Every line is written for clarity, security, and maintainability.</p>
+                </div>
+                <div class="step" role="listitem">
+                    <span class="step-number" aria-hidden="true">03</span>
+                    <h3>Verification & Testing</h3>
+                    <p>Unit tests, integration tests, and security audits. We verify correctness before anything touches production.</p>
+                </div>
+                <div class="step" role="listitem">
+                    <span class="step-number" aria-hidden="true">04</span>
+                    <h3>Deployment & Monitoring</h3>
+                    <p>Careful rollout with monitoring and alerting. We remain vigilant long after the initial launch.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-labelledby="cta-solutions-title">
+            <h2 id="cta-solutions-title">READY TO BUILD TOMORROW'S INFRASTRUCTURE?</h2>
+            <p>Let's discuss your technical vision and how TimeChainTech can help realize it.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary">SCHEDULE CONSULTATION <span class="btn-arrow" aria-hidden="true">-></span></a>
+                <a href="index.html" class="btn btn-secondary">VIEW OUR VISION</a>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo" aria-label="Site footer">
+        <p>&copy; 2025 TimeChainTech. Building the infrastructure for digital civilization.</p>
     </footer>
 
-      <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>html>
-    </footer></p></p></h3>
-                              </h1>
-      </main>
-</body></title>
-  </head>
+</html>
