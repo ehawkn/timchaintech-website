@@ -1225,6 +1225,205 @@ body {
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }
 
+/* ==========================================================================
+   Newsletter Signup Component
+   ========================================================================== */
+.newsletter-section {
+    padding: 3rem 0;
+    border-top: 1px solid var(--gray-700);
+    margin-bottom: 2rem;
+}
+
+.newsletter-container {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.newsletter-header {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-tag {
+    font-size: 0.7rem;
+    color: var(--bitcoin);
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.newsletter-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.newsletter-subtitle {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0.75rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.newsletter-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: var(--gray-800);
+    border: 2px solid var(--gray-700);
+    color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+.newsletter-input::placeholder {
+    color: var(--gray-500);
+}
+
+.newsletter-input:hover {
+    border-color: var(--gray-600);
+}
+
+.newsletter-input:focus {
+    border-color: var(--bitcoin);
+    box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.15);
+}
+
+/* Newsletter input states */
+.newsletter-input.valid {
+    border-color: #4ade80;
+}
+
+.newsletter-input.invalid {
+    border-color: #ff4444;
+}
+
+.newsletter-input.valid:focus {
+    box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+}
+
+.newsletter-input.invalid:focus {
+    box-shadow: 0 0 0 3px rgba(255, 68, 68, 0.15);
+}
+
+.newsletter-btn {
+    padding: 1rem 1.5rem;
+    background: var(--bitcoin);
+    border: 2px solid var(--bitcoin);
+    color: var(--black);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.newsletter-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--ease-out-expo);
+    z-index: 0;
+}
+
+.newsletter-btn:hover::before {
+    transform: translateX(0);
+}
+
+.newsletter-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.newsletter-btn:hover {
+    border-color: var(--white);
+    box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+}
+
+.newsletter-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.newsletter-btn:disabled:hover::before {
+    transform: translateX(-100%);
+}
+
+/* Newsletter message states */
+.newsletter-message {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+.newsletter-message.show {
+    display: flex;
+}
+
+.newsletter-message.success {
+    background: rgba(74, 222, 128, 0.1);
+    border: 1px solid #4ade80;
+    color: #4ade80;
+}
+
+.newsletter-message.error {
+    background: rgba(255, 68, 68, 0.1);
+    border: 1px solid #ff4444;
+    color: #ff4444;
+}
+
+.newsletter-message svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Privacy note */
+.newsletter-privacy {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--gray-500);
+}
+
+.newsletter-privacy a {
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.newsletter-privacy a:hover {
+    color: var(--bitcoin);
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
     .principles-split,
@@ -1276,6 +1475,20 @@ body {
     .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    /* Newsletter responsive */
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-btn {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .newsletter-section {
+        padding: 2rem 0;
     }
 
     /* Mobile drawer adjustments */
