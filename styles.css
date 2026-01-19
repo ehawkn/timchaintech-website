@@ -223,6 +223,83 @@ body {
     inset: 0;
     overflow: hidden;
     z-index: 1;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Static Constellation Fallback (No-JS)
+   Displays a subtle starfield pattern when JavaScript is disabled
+   ========================================================================== */
+.particle-container::before,
+.particle-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Static constellation dots pattern */
+.particle-container::before {
+    background-image:
+        /* Bitcoin orange particles */
+        radial-gradient(1.5px 1.5px at 10% 15%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(2px 2px at 25% 35%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1px 1px at 40% 10%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 55% 45%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(2px 2px at 70% 20%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1px 1px at 85% 55%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 15% 70%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1px 1px at 45% 80%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(2px 2px at 80% 75%, var(--bitcoin) 50%, transparent 100%),
+        radial-gradient(1px 1px at 95% 30%, var(--bitcoin) 50%, transparent 100%),
+        /* Solana purple particles */
+        radial-gradient(1.5px 1.5px at 5% 40%, var(--solana) 50%, transparent 100%),
+        radial-gradient(2px 2px at 20% 60%, var(--solana) 50%, transparent 100%),
+        radial-gradient(1px 1px at 35% 25%, var(--solana) 50%, transparent 100%),
+        radial-gradient(1.5px 1.5px at 50% 70%, var(--solana) 50%, transparent 100%),
+        radial-gradient(1px 1px at 65% 50%, var(--solana) 50%, transparent 100%),
+        radial-gradient(2px 2px at 75% 85%, var(--solana) 50%, transparent 100%),
+        radial-gradient(1px 1px at 90% 45%, var(--solana) 50%, transparent 100%),
+        /* White/gray accent particles */
+        radial-gradient(1px 1px at 12% 50%, rgba(255,255,255,0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 30% 15%, rgba(255,255,255,0.4) 50%, transparent 100%),
+        radial-gradient(1px 1px at 60% 30%, rgba(255,255,255,0.5) 50%, transparent 100%),
+        radial-gradient(1px 1px at 78% 65%, rgba(255,255,255,0.4) 50%, transparent 100%),
+        radial-gradient(1px 1px at 92% 80%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    opacity: 0.6;
+    animation: constellationTwinkle 8s ease-in-out infinite alternate;
+}
+
+/* Static constellation connection lines */
+.particle-container::after {
+    background-image:
+        /* Diagonal connection lines simulating constellation */
+        linear-gradient(135deg, transparent 48%, rgba(247, 147, 26, 0.08) 49%, rgba(247, 147, 26, 0.08) 51%, transparent 52%),
+        linear-gradient(45deg, transparent 48%, rgba(153, 69, 255, 0.06) 49%, rgba(153, 69, 255, 0.06) 51%, transparent 52%),
+        linear-gradient(165deg, transparent 48%, rgba(247, 147, 26, 0.05) 49%, rgba(247, 147, 26, 0.05) 51%, transparent 52%);
+    background-size: 200px 200px, 300px 300px, 250px 250px;
+    opacity: 0.5;
+}
+
+@keyframes constellationTwinkle {
+    0% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+/* Hide static fallback when JS canvas is active */
+.particle-container:has(.particle-canvas)::before,
+.particle-container:has(.particle-canvas)::after {
+    display: none;
+}
+
+/* Alternative hide method for browsers without :has() support */
+.js-enabled .particle-container::before,
+.js-enabled .particle-container::after {
+    display: none;
 }
 
 /* Responsive adjustments for particle canvas */
@@ -316,7 +393,7 @@ body {
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
@@ -2303,6 +2380,71 @@ body {
     }
 }
 
+/* Skeleton principle item placeholder */
+.skeleton-principle-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--gray-800);
+    border-left: 3px solid var(--gray-700);
+    margin-bottom: 1.5rem;
+}
+
+/* Skeleton wrapper positioning for hero section */
+.hero .skeleton-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero .skeleton-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding-top: 2rem;
+}
+
+/* Ensure skeleton-content in hero has proper positioning */
+.hero .skeleton-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Skeleton inline tag variation */
+.skeleton-inline-tag {
+    height: 24px;
+    width: 80px;
+    display: inline-block;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    vertical-align: middle;
+}
+
+/* Section-specific skeleton wrappers */
+.value-prop .skeleton-wrapper,
+.principles .skeleton-wrapper,
+.cta-section .skeleton-wrapper {
+    position: relative;
+}
+
+.value-prop .skeleton-overlay,
+.principles .skeleton-overlay,
+.cta-section .skeleton-overlay {
+    background: transparent;
+}
+
 /* Responsive skeleton adjustments */
 @media (max-width: 640px) {
     .skeleton-stats {
@@ -2324,6 +2466,11 @@ body {
     .skeleton-button {
         width: 100%;
     }
+
+    .skeleton-principle-item {
+        padding: 1.5rem;
+        gap: 1rem;
+    }
 }
 
 /* Reduced motion - disable shimmer animation for skeletons */
@@ -2342,7 +2489,9 @@ body {
     .skeleton-button,
     .skeleton-stat-value,
     .skeleton-stat-label,
-    .skeleton-loading-dot {
+    .skeleton-loading-dot,
+    .skeleton-inline-tag,
+    .skeleton-principle-item {
         animation: none;
         background: var(--gray-700);
     }
@@ -2621,13 +2770,23 @@ a:focus-visible {
         top: 10px;
     }
 
-    /* Hide particle canvas for reduced motion */
+    /* Hide animated particle canvas for reduced motion */
     .particle-canvas {
         display: none;
     }
 
+    /* Show static constellation fallback without animation */
     .particle-container {
-        display: none;
+        display: block;
+    }
+
+    .particle-container::before {
+        animation: none;
+        opacity: 0.5;
+    }
+
+    .particle-container::after {
+        opacity: 0.3;
     }
 }
 

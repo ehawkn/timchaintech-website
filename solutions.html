@@ -310,9 +310,9 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
+    <nav class="nav" role="navigation" aria-label="Main navigation" style="view-transition-name: nav-bar;">
         <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="TimeChainTech - Home">
+            <a href="index.html" class="logo" aria-label="TimeChainTech - Home" style="view-transition-name: site-logo;">
                 <span class="logo-bracket" aria-hidden="true">[</span>
                 <span class="logo-text">TIMCHAIN.TECH</span>
                 <span class="logo-bracket" aria-hidden="true">]</span>
@@ -329,12 +329,14 @@
 
     <main id="main-content" role="main">
         <section class="hero-section" aria-labelledby="solutions-title">
+            <div class="container" style="view-transition-name: hero-content;">
             <span class="section-comment">// SOLUTIONS</span>
             <h1 id="solutions-title">
                 TECHNICAL
                 <span class="gradient-text">SOLUTIONS</span>
                 FOR TOMORROW
             </h1>
+            </div>
         </section>
 
         <section class="solutions-grid" role="list" aria-label="Our solutions">
@@ -527,8 +529,12 @@
         </section>
     </main>
 
-    <footer role="contentinfo" aria-label="Site footer">
-        <p>&copy; 2025 TimeChainTech. Building the infrastructure for digital civilization.</p>
+    <footer class="footer" role="contentinfo" aria-label="Site footer" style="view-transition-name: site-footer;">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 TimeChainTech. Building the infrastructure for digital civilization.</p>
+            </div>
+        </div>
     </footer>
 
     <script src="script.js"></script>

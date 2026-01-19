@@ -372,28 +372,30 @@
     </style>
 </head>
 <body>
-    <nav class="nav">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="nav" role="navigation" aria-label="Main navigation" style="view-transition-name: nav-bar;">
         <div class="nav-container">
-            <a href="index.html" class="logo">
-                <span class="logo-bracket">[</span>
+            <a href="index.html" class="logo" aria-label="TimeChainTech - Home" style="view-transition-name: site-logo;">
+                <span class="logo-bracket" aria-hidden="true">[</span>
                 <span class="logo-text">TimeChainTech</span>
-                <span class="logo-bracket">]</span>
+                <span class="logo-bracket" aria-hidden="true">]</span>
             </a>
-            <div class="nav-links">
-                <a href="index.html" class="nav-link">HOME</a>
-                <a href="about.html" class="nav-link">ABOUT</a>
-                <a href="solutions.html" class="nav-link">SOLUTIONS</a>
-                <a href="requests.html" class="nav-link active">REQUESTS</a>
-                <a href="contact.html" class="nav-link">CONTACT</a>
+            <div class="nav-links" role="menubar">
+                <a href="index.html" class="nav-link" role="menuitem">HOME</a>
+                <a href="about.html" class="nav-link" role="menuitem">ABOUT</a>
+                <a href="solutions.html" class="nav-link" role="menuitem">SOLUTIONS</a>
+                <a href="requests.html" class="nav-link active" role="menuitem" aria-current="page">REQUESTS</a>
+                <a href="contact.html" class="nav-link" role="menuitem">CONTACT</a>
             </div>
         </div>
     </nav>
 
-    <main>
-        <section class="requests-hero">
-            <div class="container">
+    <main id="main-content" role="main">
+        <section class="requests-hero" aria-labelledby="requests-title">
+            <div class="container" style="view-transition-name: hero-content;">
                 <span class="section-tag">// START A PROJECT</span>
-                <h1 class="section-title">Request<br><span class="gradient-text">Services</span></h1>
+                <h1 id="requests-title" class="section-title">Request<br><span class="gradient-text">Services</span></h1>
                 <div class="hero-intro">
                     <p>
                         Ready to build on blockchain infrastructure? Submit your project request below.
@@ -605,7 +607,7 @@
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo" aria-label="Site footer" style="view-transition-name: site-footer;">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-left">
