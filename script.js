@@ -938,3 +938,1143 @@ showNotification = function(message, type = 'success') {
         window.announceToScreenReader(message);
     }
 };
+
+// =============================================
+// Particle/Constellation Effect for Hero Sections
+// =============================================
+const initParticleEffect = () => {
+    // Skip if user prefers reduced motion
+    if (prefersReducedMotion) {
+        return;
+    }
+
+    // Site color palette
+    const colors = {
+        bitcoin: '#F7931A',
+        solana: '#9945FF',
+        accent: '#00FF41',
+        white: 'rgba(255, 255, 255, 0.6)'
+    };
+
+    // Particle configuration
+    const config = {
+        particleCount: 50,          // Number of particles (will be adjusted for mobile)
+        particleMinSize: 1,
+        particleMaxSize: 3,
+        connectionDistance: 150,     // Max distance to draw lines between particles
+        moveSpeed: 0.3,              // Base movement speed
+        lineOpacity: 0.15,           // Opacity of connection lines
+        particleOpacity: 0.6         // Base opacity of particles
+    };
+
+    // Adjust for mobile
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        config.particleCount = 25;
+        config.connectionDistance = 100;
+    }
+
+    class Particle {
+        constructor(canvas) {
+            this.canvas = canvas;
+            this.reset();
+        }
+
+        reset() {
+            this.x = Math.random() * this.canvas.width;
+            this.y = Math.random() * this.canvas.height;
+            this.size = Math.random() * (config.particleMaxSize - config.particleMinSize) + config.particleMinSize;
+
+            // Random velocity with slight bias
+            this.vx = (Math.random() - 0.5) * config.moveSpeed;
+            this.vy = (Math.random() - 0.5) * config.moveSpeed;
+
+            // Assign color with weighted probability
+            const colorRoll = Math.random();
+            if (colorRoll < 0.5) {
+                this.color = colors.bitcoin;
+            } else if (colorRoll < 0.8) {
+                this.color = colors.solana;
+            } else {
+                this.color = colors.white;
+            }
+
+            this.opacity = Math.random() * 0.4 + 0.2;
+        }
+
+        update() {
+            // Move particle
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Wrap around edges (with padding)
+            const padding = 50;
+            if (this.x < -padding) this.x = this.canvas.width + padding;
+            if (this.x > this.canvas.width + padding) this.x = -padding;
+            if (this.y < -padding) this.y = this.canvas.height + padding;
+            if (this.y > this.canvas.height + padding) this.y = -padding;
+        }
+
+        draw(ctx) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = this.color;
+            ctx.globalAlpha = this.opacity;
+            ctx.fill();
+            ctx.globalAlpha = 1;
+        }
+    }
+
+    class ParticleSystem {
+        constructor(container) {
+            this.container = container;
+            this.canvas = document.createElement('canvas');
+            this.canvas.className = 'particle-canvas';
+            this.canvas.setAttribute('aria-hidden', 'true');
+            this.ctx = this.canvas.getContext('2d');
+            this.particles = [];
+            this.animationId = null;
+            this.isVisible = true;
+
+            // Append canvas to container
+            this.container.appendChild(this.canvas);
+
+            // Set up canvas size
+            this.resize();
+
+            // Create particles
+            this.createParticles();
+
+            // Set up event listeners
+            this.setupEventListeners();
+
+            // Start animation
+            this.animate();
+        }
+
+        resize() {
+            const rect = this.container.getBoundingClientRect();
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            this.canvas.width = rect.width * dpr;
+            this.canvas.height = rect.height * dpr;
+            this.canvas.style.width = rect.width + 'px';
+            this.canvas.style.height = rect.height + 'px';
+
+            this.ctx.scale(dpr, dpr);
+
+            // Store actual dimensions for calculations
+            this.width = rect.width;
+            this.height = rect.height;
+        }
+
+        createParticles() {
+            this.particles = [];
+            const count = isMobile ? config.particleCount : config.particleCount;
+
+            for (let i = 0; i < count; i++) {
+                const particle = new Particle({
+                    width: this.width,
+                    height: this.height
+                });
+                this.particles.push(particle);
+            }
+        }
+
+        setupEventListeners() {
+            // Debounced resize handler
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    this.resize();
+                    // Reset particle positions after resize
+                    this.particles.forEach(p => {
+                        p.canvas = { width: this.width, height: this.height };
+                        if (p.x > this.width) p.x = Math.random() * this.width;
+                        if (p.y > this.height) p.y = Math.random() * this.height;
+                    });
+                }, 200);
+            });
+
+            // Pause animation when not visible (performance optimization)
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    this.isVisible = entry.isIntersecting;
+                    if (this.isVisible && !this.animationId) {
+                        this.animate();
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(this.container);
+
+            // Also check for tab visibility
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    this.pause();
+                } else if (this.isVisible) {
+                    this.animate();
+                }
+            });
+        }
+
+        drawConnections() {
+            const distSq = config.connectionDistance * config.connectionDistance;
+
+            for (let i = 0; i < this.particles.length; i++) {
+                for (let j = i + 1; j < this.particles.length; j++) {
+                    const p1 = this.particles[i];
+                    const p2 = this.particles[j];
+
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+                    const distanceSq = dx * dx + dy * dy;
+
+                    if (distanceSq < distSq) {
+                        const distance = Math.sqrt(distanceSq);
+                        const opacity = (1 - distance / config.connectionDistance) * config.lineOpacity;
+
+                        // Blend colors for the line
+                        this.ctx.beginPath();
+                        this.ctx.moveTo(p1.x, p1.y);
+                        this.ctx.lineTo(p2.x, p2.y);
+
+                        // Create gradient for line
+                        const gradient = this.ctx.createLinearGradient(p1.x, p1.y, p2.x, p2.y);
+                        gradient.addColorStop(0, p1.color);
+                        gradient.addColorStop(1, p2.color);
+
+                        this.ctx.strokeStyle = gradient;
+                        this.ctx.globalAlpha = opacity;
+                        this.ctx.lineWidth = 0.5;
+                        this.ctx.stroke();
+                        this.ctx.globalAlpha = 1;
+                    }
+                }
+            }
+        }
+
+        animate() {
+            if (!this.isVisible || document.hidden) {
+                this.animationId = null;
+                return;
+            }
+
+            // Clear canvas
+            this.ctx.clearRect(0, 0, this.width, this.height);
+
+            // Update and draw particles
+            this.particles.forEach(particle => {
+                particle.update();
+                particle.draw(this.ctx);
+            });
+
+            // Draw connections
+            this.drawConnections();
+
+            // Request next frame
+            this.animationId = requestAnimationFrame(() => this.animate());
+        }
+
+        pause() {
+            if (this.animationId) {
+                cancelAnimationFrame(this.animationId);
+                this.animationId = null;
+            }
+        }
+
+        destroy() {
+            this.pause();
+            if (this.canvas && this.canvas.parentNode) {
+                this.canvas.parentNode.removeChild(this.canvas);
+            }
+        }
+    }
+
+    // Initialize particle systems for hero sections
+    const initParticleSystems = () => {
+        const particleContainers = document.querySelectorAll('.particle-container');
+
+        particleContainers.forEach(container => {
+            new ParticleSystem(container);
+        });
+    };
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initParticleSystems);
+    } else {
+        initParticleSystems();
+    }
+};
+
+// Initialize particle effect
+initParticleEffect();
+
+// =============================================
+// Skeleton Loading Screen System
+// =============================================
+const initSkeletonLoading = () => {
+    // Configuration
+    const config = {
+        fadeOutDuration: 400,    // Duration for skeleton fade-out in ms
+        revealDelay: 100,        // Delay before revealing content
+        observerThreshold: 0.1,  // Intersection observer threshold
+        observerRootMargin: '50px 0px' // Preload content slightly before visible
+    };
+
+    // Track skeleton state
+    let skeletonsHidden = false;
+
+    /**
+     * Hide all skeleton elements and reveal content
+     * Called when page is fully loaded
+     */
+    const hideSkeletons = () => {
+        if (skeletonsHidden) return;
+        skeletonsHidden = true;
+
+        // Add loaded class to body (ensures CSS rules hide skeletons)
+        document.body.classList.add('loaded');
+
+        // Find all skeleton content wrappers and reveal them
+        const skeletonContents = document.querySelectorAll('.skeleton-content');
+        skeletonContents.forEach((content, index) => {
+            // Stagger the reveal for a nicer effect
+            setTimeout(() => {
+                content.classList.add('content-revealed');
+            }, index * 50);
+        });
+
+        // Find all skeleton overlays and fade them out
+        const skeletonOverlays = document.querySelectorAll('.skeleton-overlay');
+        skeletonOverlays.forEach(overlay => {
+            overlay.style.opacity = '0';
+            overlay.style.visibility = 'hidden';
+        });
+
+        // Announce to screen readers that content is loaded
+        if (typeof window.announceToScreenReader === 'function') {
+            window.announceToScreenReader('Page content loaded');
+        }
+    };
+
+    /**
+     * Create intersection observer for lazy skeleton reveal
+     * Reveals content sections as they come into view
+     */
+    const createSkeletonObserver = () => {
+        const observerOptions = {
+            threshold: config.observerThreshold,
+            rootMargin: config.observerRootMargin
+        };
+
+        const skeletonObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const wrapper = entry.target;
+
+                    // Add reveal class with slight delay for smoother transition
+                    setTimeout(() => {
+                        wrapper.classList.add('content-revealed');
+
+                        // If wrapper has skeleton overlay, hide it
+                        const overlay = wrapper.querySelector('.skeleton-overlay');
+                        if (overlay) {
+                            overlay.style.opacity = '0';
+                            setTimeout(() => {
+                                overlay.style.visibility = 'hidden';
+                            }, config.fadeOutDuration);
+                        }
+                    }, config.revealDelay);
+
+                    // Stop observing once revealed
+                    skeletonObserver.unobserve(wrapper);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skeleton wrappers
+        const skeletonWrappers = document.querySelectorAll('.skeleton-wrapper');
+        skeletonWrappers.forEach(wrapper => {
+            skeletonObserver.observe(wrapper);
+        });
+
+        return skeletonObserver;
+    };
+
+    /**
+     * Generate skeleton placeholder HTML for common patterns
+     * Can be used dynamically to create skeleton placeholders
+     */
+    window.createSkeletonPlaceholder = (type, options = {}) => {
+        const defaults = {
+            lines: 3,
+            showIcon: true,
+            showButton: false
+        };
+        const config = { ...defaults, ...options };
+
+        switch (type) {
+            case 'card':
+                return `
+                    <div class="skeleton-card">
+                        ${config.showIcon ? '<div class="skeleton-card-icon"></div>' : ''}
+                        <div class="skeleton-card-title"></div>
+                        ${Array(config.lines).fill('<div class="skeleton-card-text"></div>').join('')}
+                        ${config.showButton ? '<div class="skeleton-button" style="margin-top: 1rem;"></div>' : ''}
+                    </div>
+                `;
+
+            case 'text':
+                return `
+                    <div class="skeleton-text-block">
+                        ${Array(config.lines).fill('<div class="skeleton-text"></div>').join('')}
+                    </div>
+                `;
+
+            case 'hero':
+                return `
+                    <div class="skeleton-hero">
+                        <div class="skeleton-hero-tag"></div>
+                        <div class="skeleton-hero-title"></div>
+                        <div class="skeleton-hero-title" style="width: 60%; height: 3rem;"></div>
+                        <div class="skeleton-hero-subtitle"></div>
+                        <div class="skeleton-hero-subtitle" style="width: 50%;"></div>
+                        <div class="skeleton-hero-buttons">
+                            <div class="skeleton-button"></div>
+                            <div class="skeleton-button"></div>
+                        </div>
+                    </div>
+                `;
+
+            case 'stats':
+                return `
+                    <div class="skeleton-stats">
+                        <div class="skeleton-stat">
+                            <div class="skeleton-stat-value"></div>
+                            <div class="skeleton-stat-label"></div>
+                        </div>
+                        <div class="skeleton-stat">
+                            <div class="skeleton-stat-value"></div>
+                            <div class="skeleton-stat-label"></div>
+                        </div>
+                        <div class="skeleton-stat">
+                            <div class="skeleton-stat-value"></div>
+                            <div class="skeleton-stat-label"></div>
+                        </div>
+                    </div>
+                `;
+
+            case 'image':
+                return `<div class="skeleton-image ${options.variant || ''}"></div>`;
+
+            case 'heading':
+                return `<div class="skeleton-heading ${options.size || ''}"></div>`;
+
+            default:
+                return '<div class="skeleton"></div>';
+        }
+    };
+
+    /**
+     * Programmatically show skeleton for an element
+     * Useful for async content loading
+     */
+    window.showSkeletonFor = (element, type = 'card', options = {}) => {
+        if (!element) return;
+
+        // Create wrapper if not exists
+        let wrapper = element.closest('.skeleton-wrapper');
+        if (!wrapper) {
+            wrapper = document.createElement('div');
+            wrapper.className = 'skeleton-wrapper';
+            element.parentNode.insertBefore(wrapper, element);
+            wrapper.appendChild(element);
+        }
+
+        // Add skeleton overlay
+        const overlay = document.createElement('div');
+        overlay.className = 'skeleton-overlay';
+        overlay.innerHTML = window.createSkeletonPlaceholder(type, options);
+        wrapper.insertBefore(overlay, wrapper.firstChild);
+
+        // Mark content as hidden
+        element.classList.add('skeleton-content');
+        wrapper.classList.remove('content-revealed');
+
+        return wrapper;
+    };
+
+    /**
+     * Hide skeleton for an element (reveal content)
+     */
+    window.hideSkeletonFor = (element) => {
+        if (!element) return;
+
+        const wrapper = element.closest('.skeleton-wrapper');
+        if (!wrapper) return;
+
+        wrapper.classList.add('content-revealed');
+
+        const overlay = wrapper.querySelector('.skeleton-overlay');
+        if (overlay) {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.visibility = 'hidden';
+            }, config.fadeOutDuration);
+        }
+    };
+
+    // Initialize on DOMContentLoaded
+    const init = () => {
+        // Create intersection observer for lazy reveal
+        createSkeletonObserver();
+
+        // Ensure skeletons are hidden after a maximum wait time
+        // This is a fallback in case load event doesn't fire
+        const maxWaitTime = 5000; // 5 seconds max
+        const fallbackTimeout = setTimeout(() => {
+            if (!skeletonsHidden) {
+                console.warn('Skeleton loading: Fallback triggered after max wait time');
+                hideSkeletons();
+            }
+        }, maxWaitTime);
+
+        // Hide skeletons when page is fully loaded
+        if (document.readyState === 'complete') {
+            hideSkeletons();
+            clearTimeout(fallbackTimeout);
+        } else {
+            window.addEventListener('load', () => {
+                // Small delay to ensure smooth transition
+                setTimeout(() => {
+                    hideSkeletons();
+                    clearTimeout(fallbackTimeout);
+                }, config.revealDelay);
+            });
+        }
+    };
+
+    // Run initialization
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+    // Expose hideSkeletons for manual control
+    window.hideAllSkeletons = hideSkeletons;
+};
+
+// Initialize skeleton loading system
+initSkeletonLoading();
+
+// =============================================
+// View Transitions API - Smooth Page Navigation
+// =============================================
+const initViewTransitions = () => {
+    // Check for View Transitions API support
+    const supportsViewTransitions = 'startViewTransition' in document;
+    
+    // Store navigation state
+    let isNavigating = false;
+    
+    /**
+     * Check if a link is an internal navigation link
+     * @param {HTMLAnchorElement} link - The link element to check
+     * @returns {boolean} - Whether the link is internal and should use view transitions
+     */
+    const isInternalLink = (link) => {
+        // Check if it's an anchor element
+        if (!link || link.tagName !== 'A') return false;
+        
+        const href = link.getAttribute('href');
+        if (!href) return false;
+        
+        // Skip if link has target="_blank" or download attribute
+        if (link.target === '_blank' || link.hasAttribute('download')) return false;
+        
+        // Skip external links
+        if (href.startsWith('http://') || href.startsWith('https://')) {
+            try {
+                const linkUrl = new URL(href);
+                const currentUrl = new URL(window.location.href);
+                if (linkUrl.origin !== currentUrl.origin) return false;
+            } catch (e) {
+                return false;
+            }
+        }
+        
+        // Skip anchor-only links (same page navigation)
+        if (href.startsWith('#')) return false;
+        
+        // Skip javascript: links
+        if (href.startsWith('javascript:')) return false;
+        
+        // Skip mailto: and tel: links
+        if (href.startsWith('mailto:') || href.startsWith('tel:')) return false;
+        
+        // Skip links with data-no-transition attribute
+        if (link.hasAttribute('data-no-transition')) return false;
+        
+        return true;
+    };
+    
+    /**
+     * Navigate to a new page with view transition
+     * @param {string} url - The URL to navigate to
+     */
+    const navigateWithTransition = async (url) => {
+        // Prevent multiple simultaneous navigations
+        if (isNavigating) return;
+        isNavigating = true;
+        
+        // Add navigating class to body for additional styling
+        document.body.classList.add('view-transitioning');
+        
+        try {
+            if (supportsViewTransitions) {
+                // Use View Transitions API
+                const transition = document.startViewTransition(async () => {
+                    // Fetch the new page
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('Navigation failed');
+                    
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const newDoc = parser.parseFromString(html, 'text/html');
+                    
+                    // Update the document title
+                    document.title = newDoc.title;
+                    
+                    // Update the main content
+                    const newMain = newDoc.querySelector('main');
+                    const currentMain = document.querySelector('main');
+                    if (newMain && currentMain) {
+                        currentMain.innerHTML = newMain.innerHTML;
+                    }
+                    
+                    // Update active nav link
+                    updateActiveNavLink(url);
+                    
+                    // Update the URL in browser history
+                    window.history.pushState({}, '', url);
+                    
+                    // Re-initialize any necessary scripts for new content
+                    reinitializeScripts();
+                    
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                });
+                
+                // Wait for the transition to complete
+                await transition.finished;
+            } else {
+                // Fallback: traditional navigation with fade effect
+                document.body.classList.add('page-transitioning');
+                
+                await new Promise(resolve => setTimeout(resolve, 300));
+                
+                window.location.href = url;
+                return; // Page will reload, no need to continue
+            }
+        } catch (error) {
+            console.error('View transition error:', error);
+            // Fallback to traditional navigation
+            window.location.href = url;
+        } finally {
+            isNavigating = false;
+            document.body.classList.remove('view-transitioning');
+        }
+    };
+    
+    /**
+     * Update the active nav link based on current URL
+     * @param {string} url - The current URL
+     */
+    const updateActiveNavLink = (url) => {
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pathname = url.split('/').pop() || 'index.html';
+        
+        navLinks.forEach(link => {
+            const linkHref = link.getAttribute('href');
+            const isActive = linkHref === pathname || 
+                           (pathname === '' && linkHref === 'index.html') ||
+                           (pathname === '/' && linkHref === 'index.html');
+            
+            link.classList.toggle('active', isActive);
+            
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
+            }
+        });
+    };
+    
+    /**
+     * Re-initialize scripts for dynamically loaded content
+     */
+    const reinitializeScripts = () => {
+        // Re-observe elements for fade-in animations
+        const fadeElements = document.querySelectorAll('.prop-card, .principle-item, .solution-card, .case-study-card');
+        fadeElements.forEach(el => {
+            if (!prefersReducedMotion) {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                
+                // Use intersection observer for reveal
+                const revealObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                revealObserver.observe(el);
+            }
+        });
+        
+        // Re-add smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Re-initialize form enhancements if forms exist
+        if (typeof initFormEnhancements === 'function') {
+            initFormEnhancements();
+        }
+        
+        // Update scroll progress
+        window.dispatchEvent(new Event('scroll'));
+        
+        // Announce page change to screen readers
+        if (typeof window.announceToScreenReader === 'function') {
+            window.announceToScreenReader('Page content updated');
+        }
+    };
+    
+    /**
+     * Handle click events on navigation links
+     * @param {MouseEvent} event - The click event
+     */
+    const handleLinkClick = (event) => {
+        // Only handle left-clicks without modifier keys
+        if (event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) {
+            return;
+        }
+        
+        // Find the closest anchor element
+        const link = event.target.closest('a');
+        
+        if (isInternalLink(link)) {
+            event.preventDefault();
+            const href = link.getAttribute('href');
+            
+            // Check if navigating to current page
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const targetPage = href.split('/').pop() || 'index.html';
+            
+            if (currentPage !== targetPage) {
+                navigateWithTransition(href);
+            }
+        }
+    };
+    
+    /**
+     * Handle browser back/forward navigation
+     * @param {PopStateEvent} event - The popstate event
+     */
+    const handlePopState = (event) => {
+        const url = window.location.href;
+        
+        if (supportsViewTransitions) {
+            document.startViewTransition(async () => {
+                // Fetch and update content for back/forward navigation
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('Navigation failed');
+                    
+                    const html = await response.text();
+                    const parser = new DOMParser();
+                    const newDoc = parser.parseFromString(html, 'text/html');
+                    
+                    document.title = newDoc.title;
+                    
+                    const newMain = newDoc.querySelector('main');
+                    const currentMain = document.querySelector('main');
+                    if (newMain && currentMain) {
+                        currentMain.innerHTML = newMain.innerHTML;
+                    }
+                    
+                    updateActiveNavLink(url);
+                    reinitializeScripts();
+                    window.scrollTo({ top: 0, behavior: 'instant' });
+                } catch (error) {
+                    console.error('PopState transition error:', error);
+                    window.location.reload();
+                }
+            });
+        } else {
+            // Without View Transitions API, just reload
+            window.location.reload();
+        }
+    };
+    
+    // Set up event listeners
+    document.addEventListener('click', handleLinkClick);
+    window.addEventListener('popstate', handlePopState);
+    
+    // Add CSS for transition states if not already present
+    if (!document.getElementById('view-transition-states')) {
+        const transitionStyles = document.createElement('style');
+        transitionStyles.id = 'view-transition-states';
+        transitionStyles.textContent = `
+            /* Body transitioning state */
+            body.view-transitioning {
+                cursor: wait;
+            }
+            
+            body.view-transitioning * {
+                pointer-events: none;
+            }
+            
+            body.view-transitioning .nav,
+            body.view-transitioning .nav * {
+                pointer-events: auto;
+            }
+            
+            /* Fallback transition for non-supporting browsers */
+            body.page-transitioning {
+                opacity: 0;
+                transition: opacity 0.3s ease-out;
+            }
+            
+            /* Loading indicator during transition */
+            body.view-transitioning::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: linear-gradient(90deg, var(--bitcoin, #F7931A), var(--solana, #9945FF));
+                z-index: 10000;
+                animation: viewTransitionProgress 0.8s ease-out forwards;
+            }
+            
+            @keyframes viewTransitionProgress {
+                0% { width: 0%; }
+                50% { width: 70%; }
+                100% { width: 100%; }
+            }
+        `;
+        document.head.appendChild(transitionStyles);
+    }
+    
+    // Log support status for debugging
+    if (supportsViewTransitions) {
+        console.log('View Transitions API: Enabled');
+    } else {
+        console.log('View Transitions API: Using fallback transitions');
+    }
+    
+    // Expose navigation function globally for programmatic use
+    window.navigateWithTransition = navigateWithTransition;
+};
+
+// Initialize View Transitions
+// Check if reduced motion is preferred before initializing
+if (!prefersReducedMotion) {
+    initViewTransitions();
+} else {
+    console.log('View Transitions API: Disabled due to reduced motion preference');
+}
+
+// =============================================
+// View Transitions: Page Load Animation
+// =============================================
+const initPageEntryAnimation = () => {
+    // Skip if user prefers reduced motion
+    if (prefersReducedMotion) {
+        document.body.classList.add('page-loaded');
+        return;
+    }
+    
+    // Check for View Transitions API support
+    const supportsViewTransitions = 'startViewTransition' in document;
+    
+    if (!supportsViewTransitions) {
+        // Fallback: Add classes for CSS-based entry animation
+        document.body.classList.add('page-loaded');
+        
+        // Stagger reveal elements
+        const staggerElements = document.querySelectorAll(
+            '.hero-content, .about-hero, .contact-hero, .requests-hero, ' +
+            '.hero-section, .section-header, .prop-card, .solution-card'
+        );
+        
+        staggerElements.forEach((el, index) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                el.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 100 + (index * 50));
+        });
+    }
+};
+
+// Run page entry animation when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPageEntryAnimation);
+} else {
+    initPageEntryAnimation();
+}
+
+// =============================================
+// Tech Stack Flip Cards - Interactive Functionality
+// =============================================
+const initTechStackFlipCards = () => {
+    const flipCards = document.querySelectorAll('.tech-flip-card');
+    const connectionsContainer = document.querySelector('.tech-connections');
+
+    if (flipCards.length === 0) return;
+
+    // Detect if device uses touch/coarse pointer (mobile/tablet)
+    const isTouchDevice = () => {
+        return window.matchMedia('(hover: none)').matches ||
+               window.matchMedia('(pointer: coarse)').matches;
+    };
+
+    // Click/tap handler for mobile devices
+    const handleFlipClick = (event) => {
+        const card = event.currentTarget;
+
+        // On touch devices, toggle the flipped state
+        if (isTouchDevice()) {
+            // Close other flipped cards first
+            flipCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('flipped')) {
+                    otherCard.classList.remove('flipped');
+                }
+            });
+
+            card.classList.toggle('flipped');
+
+            // Update connection lines
+            updateConnectionLines(card);
+        }
+    };
+
+    // Keyboard handler for accessibility
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            const card = event.currentTarget;
+
+            // Toggle flip state
+            card.classList.toggle('flipped');
+
+            // Announce state change to screen readers
+            const techName = card.querySelector('.tech-name')?.textContent || 'Technology';
+            const isFlipped = card.classList.contains('flipped');
+            const message = isFlipped
+                ? `${techName} card flipped. Now showing details.`
+                : `${techName} card flipped back. Now showing front.`;
+
+            if (typeof window.announceToScreenReader === 'function') {
+                window.announceToScreenReader(message);
+            }
+
+            // Update connection lines
+            updateConnectionLines(card);
+        }
+    };
+
+    // Highlight related technologies on hover/focus
+    const highlightRelated = (card, shouldHighlight) => {
+        const relatedTechs = card.dataset.related?.split(',') || [];
+
+        relatedTechs.forEach(techId => {
+            const relatedCard = document.querySelector(`[data-tech="${techId.trim()}"]`);
+            if (relatedCard) {
+                if (shouldHighlight) {
+                    relatedCard.classList.add('related');
+                } else {
+                    relatedCard.classList.remove('related');
+                }
+            }
+        });
+
+        // Update connection lines
+        if (shouldHighlight) {
+            showConnectionLines(card);
+        } else {
+            hideConnectionLines();
+        }
+    };
+
+    // Get center position of a card
+    const getCardCenter = (card) => {
+        const rect = card.getBoundingClientRect();
+        const containerRect = connectionsContainer?.getBoundingClientRect();
+
+        if (!containerRect) return null;
+
+        return {
+            x: rect.left + rect.width / 2 - containerRect.left,
+            y: rect.top + rect.height / 2 - containerRect.top
+        };
+    };
+
+    // Show connection lines between related technologies
+    const showConnectionLines = (hoveredCard) => {
+        if (!connectionsContainer) return;
+
+        const techId = hoveredCard.dataset.tech;
+        const lines = connectionsContainer.querySelectorAll('.tech-connection-line');
+
+        lines.forEach(line => {
+            const fromTech = line.dataset.from;
+            const toTech = line.dataset.to;
+
+            // Check if this line connects to the hovered card
+            if (fromTech === techId || toTech === techId) {
+                const fromCard = document.querySelector(`[data-tech="${fromTech}"]`);
+                const toCard = document.querySelector(`[data-tech="${toTech}"]`);
+
+                if (fromCard && toCard) {
+                    const fromCenter = getCardCenter(fromCard);
+                    const toCenter = getCardCenter(toCard);
+
+                    if (fromCenter && toCenter) {
+                        line.setAttribute('x1', fromCenter.x);
+                        line.setAttribute('y1', fromCenter.y);
+                        line.setAttribute('x2', toCenter.x);
+                        line.setAttribute('y2', toCenter.y);
+                        line.classList.add('active');
+                    }
+                }
+            }
+        });
+    };
+
+    // Hide all connection lines
+    const hideConnectionLines = () => {
+        if (!connectionsContainer) return;
+
+        const lines = connectionsContainer.querySelectorAll('.tech-connection-line');
+        lines.forEach(line => {
+            line.classList.remove('active');
+        });
+    };
+
+    // Update connection lines for a card (when flipped)
+    const updateConnectionLines = (card) => {
+        if (card.classList.contains('flipped')) {
+            highlightRelated(card, true);
+        } else {
+            highlightRelated(card, false);
+        }
+    };
+
+    // Handle window resize (recalculate line positions)
+    let resizeTimeout;
+    const handleResize = () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const flippedCard = document.querySelector('.tech-flip-card.flipped');
+            if (flippedCard) {
+                updateConnectionLines(flippedCard);
+            }
+        }, 100);
+    };
+
+    // Attach event listeners to each card
+    flipCards.forEach(card => {
+        // Click/tap handler
+        card.addEventListener('click', handleFlipClick);
+
+        // Keyboard accessibility
+        card.addEventListener('keydown', handleKeyDown);
+
+        // Mouse hover handlers (for desktop)
+        card.addEventListener('mouseenter', () => {
+            if (!isTouchDevice()) {
+                highlightRelated(card, true);
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (!isTouchDevice()) {
+                highlightRelated(card, false);
+            }
+        });
+
+        // Focus handlers for keyboard navigation
+        card.addEventListener('focus', () => {
+            highlightRelated(card, true);
+        });
+
+        card.addEventListener('blur', () => {
+            // Only remove highlight if not flipped
+            if (!card.classList.contains('flipped')) {
+                highlightRelated(card, false);
+            }
+        });
+    });
+
+    // Listen for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Click outside to close flipped cards on mobile
+    document.addEventListener('click', (event) => {
+        if (!event.target.closest('.tech-flip-card')) {
+            flipCards.forEach(card => {
+                if (card.classList.contains('flipped')) {
+                    card.classList.remove('flipped');
+                    highlightRelated(card, false);
+                }
+            });
+        }
+    });
+
+    // Close flipped cards on Escape key
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            flipCards.forEach(card => {
+                if (card.classList.contains('flipped')) {
+                    card.classList.remove('flipped');
+                    highlightRelated(card, false);
+                }
+            });
+        }
+    });
+
+    console.log('Tech Stack Flip Cards: Initialized');
+};
+
+// Initialize tech stack flip cards when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTechStackFlipCards);
+} else {
+    initTechStackFlipCards();
+}

@@ -203,6 +203,41 @@ body {
     }
 }
 
+/* ==========================================================================
+   Particle Canvas Overlay
+   ========================================================================== */
+.particle-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
+/* Container for particle effect in hero sections */
+.particle-container {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/* Responsive adjustments for particle canvas */
+@media (max-width: 768px) {
+    .particle-canvas {
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 480px) {
+    .particle-canvas {
+        opacity: 0.3;
+    }
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -1424,6 +1459,331 @@ body {
     color: var(--bitcoin);
 }
 
+/* ==========================================================================
+   Tech Stack Flip Cards
+   ========================================================================== */
+
+/* Tech Stack Container with Connection Lines */
+.tech-stack-container {
+    position: relative;
+    perspective: 1000px;
+}
+
+.tech-stack {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    position: relative;
+}
+
+/* Connection Lines SVG Container */
+.tech-connections {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+}
+
+.tech-connection-line {
+    stroke: var(--bitcoin);
+    stroke-width: 2;
+    stroke-dasharray: 8 4;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.4s ease, stroke 0.3s ease;
+}
+
+.tech-connection-line.active {
+    opacity: 0.6;
+    animation: connectionPulse 2s ease-in-out infinite;
+}
+
+@keyframes connectionPulse {
+    0%, 100% {
+        stroke-dashoffset: 0;
+        opacity: 0.6;
+    }
+    50% {
+        stroke-dashoffset: 24;
+        opacity: 0.9;
+    }
+}
+
+/* Flip Card Container */
+.tech-flip-card {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    perspective: 1000px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.tech-flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+/* Flip on hover (desktop) */
+@media (hover: hover) and (pointer: fine) {
+    .tech-flip-card:hover .tech-flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+/* Flip on click/touch (mobile) - uses .flipped class */
+.tech-flip-card.flipped .tech-flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Focus state for accessibility */
+.tech-flip-card:focus {
+    outline: none;
+}
+
+.tech-flip-card:focus .tech-flip-card-inner {
+    box-shadow: 0 0 0 3px var(--bitcoin);
+}
+
+.tech-flip-card:focus-visible .tech-flip-card-inner {
+    box-shadow: 0 0 0 3px var(--bitcoin);
+}
+
+/* Front and Back Card Faces */
+.tech-card-front,
+.tech-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-900);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card-front {
+    z-index: 2;
+}
+
+.tech-card-back {
+    transform: rotateY(180deg);
+    background: var(--gray-800);
+}
+
+/* Glow Effect on Hover/Flip */
+@media (hover: hover) and (pointer: fine) {
+    .tech-flip-card:hover .tech-card-front,
+    .tech-flip-card:hover .tech-card-back {
+        border-color: var(--tech-glow-color, var(--bitcoin));
+        box-shadow:
+            0 0 20px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.3),
+            0 0 40px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.15),
+            inset 0 0 20px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.05);
+    }
+}
+
+.tech-flip-card.flipped .tech-card-front,
+.tech-flip-card.flipped .tech-card-back {
+    border-color: var(--tech-glow-color, var(--bitcoin));
+    box-shadow:
+        0 0 25px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.4),
+        0 0 50px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.2),
+        inset 0 0 30px rgba(var(--tech-glow-rgb, 247, 147, 26), 0.08);
+}
+
+/* Technology-Specific Glow Colors */
+.tech-flip-card[data-tech="bitcoin"] {
+    --tech-glow-color: #F7931A;
+    --tech-glow-rgb: 247, 147, 26;
+}
+
+.tech-flip-card[data-tech="solana"] {
+    --tech-glow-color: #9945FF;
+    --tech-glow-rgb: 153, 69, 255;
+}
+
+.tech-flip-card[data-tech="lightning"] {
+    --tech-glow-color: #792DE4;
+    --tech-glow-rgb: 121, 45, 228;
+}
+
+.tech-flip-card[data-tech="anchor"] {
+    --tech-glow-color: #2563EB;
+    --tech-glow-rgb: 37, 99, 235;
+}
+
+.tech-flip-card[data-tech="rust"] {
+    --tech-glow-color: #CE422B;
+    --tech-glow-rgb: 206, 66, 43;
+}
+
+.tech-flip-card[data-tech="smart-contracts"] {
+    --tech-glow-color: #00D4AA;
+    --tech-glow-rgb: 0, 212, 170;
+}
+
+/* Front Card Content */
+.tech-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .tech-flip-card:hover .tech-icon {
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px var(--tech-glow-color, var(--bitcoin)));
+    }
+}
+
+.tech-flip-card.flipped .tech-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 10px var(--tech-glow-color, var(--bitcoin)));
+}
+
+.tech-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.tech-tagline {
+    font-size: 0.8rem;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Back Card Content */
+.tech-back-title {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--tech-glow-color, var(--bitcoin));
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tech-description {
+    font-size: 0.85rem;
+    color: var(--gray-200);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.tech-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: center;
+}
+
+.tech-feature {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    background: rgba(var(--tech-glow-rgb, 247, 147, 26), 0.15);
+    border: 1px solid var(--tech-glow-color, var(--bitcoin));
+    color: var(--tech-glow-color, var(--bitcoin));
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Flip Indicator */
+.flip-indicator {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 0.65rem;
+    color: var(--gray-500);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.flip-indicator svg {
+    width: 12px;
+    height: 12px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .tech-flip-card:hover .flip-indicator {
+        opacity: 0;
+    }
+}
+
+.tech-flip-card.flipped .flip-indicator {
+    opacity: 0;
+}
+
+/* Related tech highlight */
+.tech-flip-card.related {
+    transform: scale(1.02);
+    z-index: 2;
+}
+
+.tech-flip-card.related .tech-card-front,
+.tech-flip-card.related .tech-card-back {
+    border-color: var(--bitcoin);
+    box-shadow: 0 0 15px rgba(247, 147, 26, 0.3);
+}
+
+/* Mobile tap indicator */
+.tap-indicator {
+    display: none;
+}
+
+@media (hover: none) or (pointer: coarse) {
+    .tap-indicator {
+        display: flex;
+    }
+
+    .hover-indicator {
+        display: none;
+    }
+}
+
+/* Tech stack responsive adjustments */
+@media (max-width: 768px) {
+    .tech-flip-card {
+        height: 160px;
+    }
+
+    .tech-icon {
+        font-size: 2rem;
+    }
+
+    .tech-name {
+        font-size: 1rem;
+    }
+
+    .tech-description {
+        font-size: 0.8rem;
+    }
+
+    .tech-feature {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 968px) {
     .principles-split,
@@ -1511,6 +1871,488 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 2rem;
+    }
+}
+
+/* ==========================================================================
+   SKELETON LOADING SCREENS
+   ========================================================================== */
+
+/* Skeleton shimmer animation - gradient moving left to right */
+@keyframes skeletonShimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Base skeleton class with shimmer effect */
+.skeleton {
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Skeleton text line placeholder */
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-text:last-child {
+    width: 70%;
+    margin-bottom: 0;
+}
+
+/* Skeleton heading placeholder */
+.skeleton-heading {
+    height: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-heading.large {
+    height: 3rem;
+}
+
+.skeleton-heading.xlarge {
+    height: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Skeleton card placeholder */
+.skeleton-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-700);
+    padding: 2rem;
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.skeleton-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-card-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.skeleton-card-title {
+    height: 1.5rem;
+    width: 60%;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.skeleton-card-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-card-text:nth-child(4) {
+    width: 90%;
+}
+
+.skeleton-card-text:nth-child(5) {
+    width: 75%;
+}
+
+/* Skeleton image placeholder */
+.skeleton-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-image.avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.skeleton-image.square {
+    width: 60px;
+    height: 60px;
+}
+
+/* Skeleton hero section placeholder */
+.skeleton-hero {
+    padding: 2rem 0;
+}
+
+.skeleton-hero-tag {
+    height: 0.75rem;
+    width: 150px;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-hero-title {
+    height: 4rem;
+    width: 80%;
+    margin-bottom: 1rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-hero-title:nth-child(2) {
+    width: 60%;
+    height: 3rem;
+}
+
+.skeleton-hero-subtitle {
+    height: 1rem;
+    width: 70%;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-hero-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.skeleton-button {
+    height: 50px;
+    width: 150px;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 0;
+    border: 2px solid var(--gray-700);
+}
+
+/* Skeleton stats placeholder */
+.skeleton-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.skeleton-stat {
+    text-align: center;
+    padding: 1.5rem;
+    border: 1px solid var(--gray-700);
+    background: var(--gray-900);
+}
+
+.skeleton-stat-value {
+    height: 2.5rem;
+    width: 60%;
+    margin: 0 auto 0.5rem;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+.skeleton-stat-label {
+    height: 0.75rem;
+    width: 80%;
+    margin: 0 auto;
+    background: linear-gradient(
+        90deg,
+        var(--gray-800) 0%,
+        var(--gray-700) 20%,
+        var(--gray-600) 40%,
+        var(--gray-700) 60%,
+        var(--gray-800) 80%,
+        var(--gray-800) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s ease-in-out infinite;
+    border-radius: 4px;
+}
+
+/* Skeleton grid layout for multiple cards */
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* Hide skeletons when content is loaded */
+.loaded .skeleton,
+.loaded .skeleton-text,
+.loaded .skeleton-heading,
+.loaded .skeleton-card,
+.loaded .skeleton-image,
+.loaded .skeleton-hero,
+.loaded .skeleton-button,
+.loaded .skeleton-stats,
+.loaded .skeleton-grid {
+    display: none;
+}
+
+/* Content reveal animation when skeleton fades out */
+.skeleton-content {
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+}
+
+.loaded .skeleton-content,
+.content-revealed .skeleton-content {
+    opacity: 1;
+}
+
+/* Skeleton wrapper for relative positioning */
+.skeleton-wrapper {
+    position: relative;
+}
+
+.skeleton-wrapper .skeleton-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    background: var(--black);
+    transition: opacity 0.4s ease-out, visibility 0.4s ease-out;
+}
+
+.loaded .skeleton-wrapper .skeleton-overlay,
+.content-revealed .skeleton-wrapper .skeleton-overlay {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Staggered skeleton animation delays for visual interest */
+.skeleton-card:nth-child(1),
+.skeleton-card:nth-child(1) * { animation-delay: 0s; }
+.skeleton-card:nth-child(2),
+.skeleton-card:nth-child(2) * { animation-delay: 0.1s; }
+.skeleton-card:nth-child(3),
+.skeleton-card:nth-child(3) * { animation-delay: 0.2s; }
+.skeleton-card:nth-child(4),
+.skeleton-card:nth-child(4) * { animation-delay: 0.3s; }
+.skeleton-card:nth-child(5),
+.skeleton-card:nth-child(5) * { animation-delay: 0.4s; }
+.skeleton-card:nth-child(6),
+.skeleton-card:nth-child(6) * { animation-delay: 0.5s; }
+
+/* Skeleton loading indicator with pulsing dot */
+.skeleton-loading-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray-400);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+.skeleton-loading-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--bitcoin);
+    border-radius: 50%;
+    animation: skeletonPulse 1s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive skeleton adjustments */
+@media (max-width: 640px) {
+    .skeleton-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-hero-title {
+        height: 2.5rem;
+    }
+
+    .skeleton-hero-buttons {
+        flex-direction: column;
+    }
+
+    .skeleton-button {
+        width: 100%;
+    }
+}
+
+/* Reduced motion - disable shimmer animation for skeletons */
+@media (prefers-reduced-motion: reduce) {
+    .skeleton,
+    .skeleton-text,
+    .skeleton-heading,
+    .skeleton-card::before,
+    .skeleton-card-icon,
+    .skeleton-card-title,
+    .skeleton-card-text,
+    .skeleton-image,
+    .skeleton-hero-tag,
+    .skeleton-hero-title,
+    .skeleton-hero-subtitle,
+    .skeleton-button,
+    .skeleton-stat-value,
+    .skeleton-stat-label,
+    .skeleton-loading-dot {
+        animation: none;
+        background: var(--gray-700);
+    }
+
+    .skeleton-content {
+        transition: none;
+    }
+
+    .skeleton-wrapper .skeleton-overlay {
+        transition: none;
     }
 }
 
@@ -1777,5 +2619,477 @@ a:focus-visible {
 
     .skip-link:focus {
         top: 10px;
+    }
+
+    /* Hide particle canvas for reduced motion */
+    .particle-canvas {
+        display: none;
+    }
+
+    .particle-container {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   VIEW TRANSITIONS API - Smooth Page Transitions
+   ========================================================================== */
+
+/* Enable view transitions for the document */
+@view-transition {
+    navigation: auto;
+}
+
+/* Root transition defaults */
+::view-transition {
+    pointer-events: none;
+}
+
+/* Default crossfade animation for the entire page */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.4s;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+    animation-name: view-fade-out;
+}
+
+::view-transition-new(root) {
+    animation-name: view-fade-in;
+}
+
+/* Navigation bar - persists across pages with subtle animation */
+::view-transition-old(nav-bar),
+::view-transition-new(nav-bar) {
+    animation-duration: 0.3s;
+    animation-timing-function: ease-out;
+    height: 100%;
+    width: 100%;
+}
+
+::view-transition-old(nav-bar) {
+    animation-name: view-fade-out;
+}
+
+::view-transition-new(nav-bar) {
+    animation-name: view-fade-in;
+}
+
+/* Hero section - slide up with fade */
+::view-transition-old(hero-content),
+::view-transition-new(hero-content) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+::view-transition-old(hero-content) {
+    animation-name: view-slide-out-up;
+}
+
+::view-transition-new(hero-content) {
+    animation-name: view-slide-in-up;
+}
+
+/* Main content area - slide and fade transition */
+::view-transition-old(main-content),
+::view-transition-new(main-content) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+::view-transition-old(main-content) {
+    animation-name: view-slide-fade-out;
+}
+
+::view-transition-new(main-content) {
+    animation-name: view-slide-fade-in;
+}
+
+/* Footer - fade transition */
+::view-transition-old(site-footer),
+::view-transition-new(site-footer) {
+    animation-duration: 0.4s;
+    animation-timing-function: ease-out;
+}
+
+::view-transition-old(site-footer) {
+    animation-name: view-fade-out;
+}
+
+::view-transition-new(site-footer) {
+    animation-name: view-fade-in;
+    animation-delay: 0.1s;
+}
+
+/* Logo - morph/persist animation */
+::view-transition-old(site-logo),
+::view-transition-new(site-logo) {
+    animation-duration: 0.35s;
+    animation-timing-function: ease-in-out;
+    mix-blend-mode: normal;
+    height: auto;
+}
+
+::view-transition-group(site-logo) {
+    animation-duration: 0.35s;
+    animation-timing-function: ease-in-out;
+}
+
+/* Section headers - staggered slide in */
+::view-transition-old(section-header),
+::view-transition-new(section-header) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+::view-transition-old(section-header) {
+    animation-name: view-slide-out-left;
+}
+
+::view-transition-new(section-header) {
+    animation-name: view-slide-in-right;
+}
+
+/* CTA sections - scale and fade */
+::view-transition-old(cta-section),
+::view-transition-new(cta-section) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+::view-transition-old(cta-section) {
+    animation-name: view-scale-fade-out;
+}
+
+::view-transition-new(cta-section) {
+    animation-name: view-scale-fade-in;
+}
+
+/* ==========================================================================
+   View Transition Keyframe Animations
+   ========================================================================== */
+
+/* Basic fade animations */
+@keyframes view-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes view-fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Slide up animations */
+@keyframes view-slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes view-slide-out-up {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+}
+
+/* Slide down animations */
+@keyframes view-slide-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes view-slide-out-down {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+}
+
+/* Slide with fade - main content transitions */
+@keyframes view-slide-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes view-slide-fade-out {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+/* Horizontal slide animations */
+@keyframes view-slide-in-right {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes view-slide-out-left {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+}
+
+@keyframes view-slide-in-left {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes view-slide-out-right {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+}
+
+/* Scale with fade animations */
+@keyframes view-scale-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes view-scale-fade-out {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(1.05);
+    }
+}
+
+/* ==========================================================================
+   View Transition Fallback Styles (for browsers without support)
+   ========================================================================== */
+
+/* Fallback: page load animation when View Transitions not supported */
+@supports not (view-transition-name: none) {
+    /* Fallback page entrance animation */
+    body.page-transitioning {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+    }
+
+    body.page-loaded {
+        opacity: 1;
+    }
+
+    /* Fallback: animate elements on page load */
+    .nav {
+        animation: fallback-slide-down 0.5s ease-out both;
+    }
+
+    .hero-content,
+    .about-hero,
+    .contact-hero,
+    .requests-hero,
+    .hero-section {
+        animation: fallback-fade-up 0.6s ease-out 0.1s both;
+    }
+
+    main > section:not(:first-child) {
+        animation: fallback-fade-up 0.6s ease-out 0.2s both;
+    }
+
+    .footer {
+        animation: fallback-fade-in 0.5s ease-out 0.3s both;
+    }
+}
+
+@keyframes fallback-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fallback-fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fallback-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* ==========================================================================
+   View Transition CSS Custom Properties
+   ========================================================================== */
+
+/* View transition name assignments via CSS */
+.nav {
+    view-transition-name: nav-bar;
+}
+
+.logo {
+    view-transition-name: site-logo;
+}
+
+.hero-content,
+.about-hero .container,
+.contact-hero .container,
+.requests-hero .container,
+.hero-section .container {
+    view-transition-name: hero-content;
+}
+
+main[id="main-content"] > section:not(:first-child):not(.cta-section):not(.alt-contact) {
+    view-transition-name: main-content;
+}
+
+.footer {
+    view-transition-name: site-footer;
+}
+
+.section-header {
+    view-transition-name: section-header;
+}
+
+.cta-section,
+.cta-box {
+    view-transition-name: cta-section;
+}
+
+/* Ensure unique view-transition-names by disabling for repeated elements */
+.prop-card,
+.solution-card,
+.case-study-card,
+.team-card,
+.principle-item,
+.tech-item,
+.process-step,
+.timeline-item,
+.alt-contact-card,
+.stat {
+    view-transition-name: none;
+}
+
+/* ==========================================================================
+   Reduced Motion: Disable View Transitions
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    /* Disable all view transition animations */
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+        animation-duration: 0.01ms !important;
+    }
+
+    ::view-transition-group(*) {
+        animation-duration: 0.01ms !important;
+    }
+
+    /* Remove view-transition-name to prevent any transitions */
+    .nav,
+    .logo,
+    .hero-content,
+    .about-hero .container,
+    .contact-hero .container,
+    .requests-hero .container,
+    .hero-section .container,
+    main[id="main-content"] > section,
+    .footer,
+    .section-header,
+    .cta-section,
+    .cta-box {
+        view-transition-name: none;
+    }
+
+    /* Fallback styles should also be disabled */
+    @supports not (view-transition-name: none) {
+        .nav,
+        .hero-content,
+        .about-hero,
+        .contact-hero,
+        .requests-hero,
+        .hero-section,
+        main > section,
+        .footer {
+            animation: none !important;
+        }
     }
 }
