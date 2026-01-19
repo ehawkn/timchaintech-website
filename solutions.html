@@ -32,276 +32,68 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         .hero-section {
-            padding: 150px 0 80px;
-            background: linear-gradient(180deg, var(--black) 0%, var(--gray-900) 100%);
+            padding: 140px 0 60px;
             text-align: center;
         }
 
         .hero-section h1 {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 8vw, 5rem);
-            line-height: 1;
-            letter-spacing: -2px;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
         }
 
-        .section-comment {
-            font-size: 0.75rem;
-            color: var(--bitcoin);
-            letter-spacing: 2px;
-            font-weight: 700;
-            margin-bottom: 1rem;
+        .hero-tagline {
+            color: var(--gray-400);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .solutions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 4rem 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            padding: 3rem 2rem 5rem;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
-        .solution-card {
-            background: var(--gray-900);
-            border: 1px solid var(--gray-700);
-            padding: 2.5rem;
-            transition: var(--transition);
-        }
-
-        .solution-card:hover {
-            border-color: var(--bitcoin);
-            transform: translateY(-8px);
-            background: var(--gray-800);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-header h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-
-        .card-code {
-            font-size: 0.8rem;
-            color: var(--bitcoin);
-            font-weight: 700;
-        }
-
-        .card-description {
-            color: var(--gray-300);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-tech {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-        }
-
-        /* Case Studies Section */
-        .case-studies-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid var(--gray-700);
-        }
-
-        .case-studies-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .case-studies-header h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3rem);
-            letter-spacing: -1px;
-        }
-
-        .case-studies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .case-study-card {
-            background: var(--gray-900);
-            border: 1px solid var(--gray-700);
-            padding: 2.5rem;
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .case-study-card:hover {
-            border-color: var(--bitcoin);
-            transform: translateY(-8px);
-            background: var(--gray-800);
-        }
-
-        .case-study-type {
-            font-size: 0.7rem;
-            color: var(--bitcoin);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
+        .glass-card h2 {
+            font-size: 1.2rem;
             margin-bottom: 0.75rem;
         }
 
-        .case-study-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: var(--white);
-        }
-
-        .case-study-description {
-            color: var(--gray-300);
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .case-study-tech {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-
-        .btn-details {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            background: transparent;
-            border: 1px solid var(--gray-600);
-            color: var(--gray-300);
-            letter-spacing: 1px;
-            transition: var(--transition);
-            width: fit-content;
-        }
-
-        .btn-details:hover {
-            border-color: var(--bitcoin);
-            color: var(--bitcoin);
-        }
-
-        .btn-details .arrow {
-            transition: transform 0.3s ease;
-        }
-
-        .btn-details:hover .arrow {
-            transform: translateX(4px);
-        }
-
-        /* Approach Section */
-        .approach-section {
-            padding: 6rem 2rem;
-            background: var(--gray-900);
-            text-align: center;
-        }
-
-        .approach-section h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 3rem;
-            letter-spacing: -1px;
-        }
-
-        .approach-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .step {
-            background: var(--gray-800);
-            border-left: 3px solid var(--gray-700);
-            padding: 2rem;
-            text-align: left;
-            transition: var(--transition);
-        }
-
-        .step:hover {
-            border-left-color: var(--bitcoin);
-            transform: translateX(5px);
-        }
-
-        .step-number {
-            font-size: 1.5rem;
-            color: var(--bitcoin);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.75rem;
-            font-weight: 700;
-        }
-
-        .step p {
-            color: var(--gray-300);
+        .glass-card p {
+            color: var(--gray-400);
             font-size: 0.9rem;
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
-        /* CTA Section */
         .cta-section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            border-top: 1px solid var(--gray-800);
         }
 
         .cta-section h2 {
             font-family: var(--font-display);
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
-
-        .cta-section p {
-            color: var(--gray-300);
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
 
         footer {
-            background: var(--gray-900);
-            border-top: 1px solid var(--gray-700);
             padding: 2rem;
             text-align: center;
+            border-top: 1px solid var(--gray-800);
         }
 
         footer p {
-            color: var(--gray-400);
+            color: var(--gray-500);
             font-size: 0.85rem;
         }
 
         @media (max-width: 768px) {
-            .solutions-grid,
-            .case-studies-grid {
+            .solutions-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -310,9 +102,9 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation" style="view-transition-name: nav-bar;">
+    <nav class="nav" role="navigation" aria-label="Main navigation">
         <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="TimeChainTech - Home" style="view-transition-name: site-logo;">
+            <a href="index.html" class="logo" aria-label="TimeChainTech - Home">
                 <span class="logo-bracket" aria-hidden="true">[</span>
                 <span class="logo-text">TIMCHAIN.TECH</span>
                 <span class="logo-bracket" aria-hidden="true">]</span>
@@ -329,212 +121,52 @@
 
     <main id="main-content" role="main">
         <section class="hero-section" aria-labelledby="solutions-title">
-            <div class="container" style="view-transition-name: hero-content;">
-            <span class="section-comment">// SOLUTIONS</span>
-            <h1 id="solutions-title">
-                TECHNICAL
-                <span class="gradient-text">SOLUTIONS</span>
-                FOR TOMORROW
-            </h1>
+            <div class="container">
+                <h1 id="solutions-title">Our Solutions</h1>
+                <p class="hero-tagline">Blockchain infrastructure and development services built for performance, security, and scale.</p>
             </div>
         </section>
 
         <section class="solutions-grid" role="list" aria-label="Our solutions">
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Solana Dapps</h2>
-                    <span class="card-code" aria-hidden="true">01</span>
-                </div>
-                <p class="card-description">
-                    High-performance decentralized applications leveraging Solana's parallel processing architecture. From token distribution mechanisms to complex financial instruments, we build solutions that scale.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">Rust</span>
-                    <span class="tech-tag">SPL Tokens</span>
-                    <span class="tech-tag">Web3.js</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Solana DApps</h2>
+                <p>High-performance decentralized applications leveraging Solana's parallel processing for scalable token systems and financial instruments.</p>
             </article>
 
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Bitcoin Infrastructure</h2>
-                    <span class="card-code" aria-hidden="true">02</span>
-                </div>
-                <p class="card-description">
-                    On-chain solutions built on Bitcoin's immutable foundation. Settlement layers, inscriptions, and Layer 2 protocols that honor the original vision of decentralized money.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">Bitcoin Script</span>
-                    <span class="tech-tag">Layer 2</span>
-                    <span class="tech-tag">Cryptography</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Bitcoin Infrastructure</h2>
+                <p>On-chain solutions built on Bitcoin's immutable foundation, including settlement layers, inscriptions, and Layer 2 protocols.</p>
             </article>
 
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Cross-Chain Bridges</h2>
-                    <span class="card-code" aria-hidden="true">03</span>
-                </div>
-                <p class="card-description">
-                    Secure, audited interoperability solutions. We design protocols for trustless asset transfer between networks, maintaining security while enabling seamless composability.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">Atomic Swaps</span>
-                    <span class="tech-tag">MPC</span>
-                    <span class="tech-tag">Verification</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Cross-Chain Bridges</h2>
+                <p>Secure interoperability solutions for trustless asset transfer between networks while maintaining security and composability.</p>
             </article>
 
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Custom Tokenomics</h2>
-                    <span class="card-code" aria-hidden="true">04</span>
-                </div>
-                <p class="card-description">
-                    Mathematically-designed token systems that align incentives with project goals. We analyze game theory, design distribution mechanics, and optimize economic primitives.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">Game Theory</span>
-                    <span class="tech-tag">Mechanism Design</span>
-                    <span class="tech-tag">Economics</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Custom Tokenomics</h2>
+                <p>Mathematically-designed token systems using game theory and mechanism design to align incentives with project goals.</p>
             </article>
 
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Data Infrastructure</h2>
-                    <span class="card-code" aria-hidden="true">05</span>
-                </div>
-                <p class="card-description">
-                    Indexing, caching, and verification systems for blockchain data. Reliable access to on-chain information with cryptographic proof of authenticity.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">GraphQL</span>
-                    <span class="tech-tag">Indexing</span>
-                    <span class="tech-tag">APIs</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Data Infrastructure</h2>
+                <p>Indexing, caching, and verification systems providing reliable access to on-chain data with cryptographic proof.</p>
             </article>
 
-            <article class="solution-card" role="listitem">
-                <div class="card-header">
-                    <h2>Security Auditing</h2>
-                    <span class="card-code" aria-hidden="true">06</span>
-                </div>
-                <p class="card-description">
-                    Comprehensive smart contract and protocol audits. We identify vulnerabilities, test edge cases, and provide detailed remediation recommendations.
-                </p>
-                <div class="card-tech">
-                    <span class="tech-tag">Code Review</span>
-                    <span class="tech-tag">Testing</span>
-                    <span class="tech-tag">Formal Verification</span>
-                </div>
+            <article class="glass-card" role="listitem">
+                <h2>Security Auditing</h2>
+                <p>Comprehensive smart contract audits to identify vulnerabilities, test edge cases, and provide remediation guidance.</p>
             </article>
         </section>
 
-        <section class="case-studies-section" aria-labelledby="case-studies-title">
-            <div class="case-studies-header">
-                <span class="section-comment">// OUR WORK</span>
-                <h2 id="case-studies-title">CASE STUDIES</h2>
-            </div>
-
-            <div class="case-studies-grid" role="list" aria-label="Case studies">
-                <article class="case-study-card" role="listitem">
-                    <span class="case-study-type">DeFi Protocol</span>
-                    <h3 class="case-study-name">Liquid Yield Aggregator</h3>
-                    <p class="case-study-description">
-                        Built a cross-chain yield optimization protocol that automatically routes liquidity to the highest-yielding opportunities. Achieved $50M+ TVL within three months of launch with zero security incidents.
-                    </p>
-                    <div class="case-study-tech">
-                        <span class="tech-tag">Solana</span>
-                        <span class="tech-tag">Rust</span>
-                        <span class="tech-tag">Anchor</span>
-                        <span class="tech-tag">React</span>
-                    </div>
-                    <a href="#" class="btn-details">
-                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
-                    </a>
-                </article>
-
-                <article class="case-study-card" role="listitem">
-                    <span class="case-study-type">NFT Platform</span>
-                    <h3 class="case-study-name">Ordinals Marketplace</h3>
-                    <p class="case-study-description">
-                        Developed a fully on-chain NFT marketplace for Bitcoin Ordinals with trustless escrow and atomic swaps. Pioneered PSBT-based trading that eliminates counterparty risk entirely.
-                    </p>
-                    <div class="case-study-tech">
-                        <span class="tech-tag">Bitcoin</span>
-                        <span class="tech-tag">Ordinals</span>
-                        <span class="tech-tag">PSBT</span>
-                        <span class="tech-tag">TypeScript</span>
-                    </div>
-                    <a href="#" class="btn-details">
-                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
-                    </a>
-                </article>
-
-                <article class="case-study-card" role="listitem">
-                    <span class="case-study-type">DAO Infrastructure</span>
-                    <h3 class="case-study-name">Governance Framework</h3>
-                    <p class="case-study-description">
-                        Designed and implemented a modular governance system with time-locked proposals, delegation, and quadratic voting. Now used by 15+ DAOs managing over $200M in treasury assets.
-                    </p>
-                    <div class="case-study-tech">
-                        <span class="tech-tag">Solana</span>
-                        <span class="tech-tag">SPL Governance</span>
-                        <span class="tech-tag">Realms</span>
-                        <span class="tech-tag">Next.js</span>
-                    </div>
-                    <a href="#" class="btn-details">
-                        VIEW DETAILS <span class="arrow" aria-hidden="true">-></span>
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <section class="approach-section" aria-labelledby="approach-title">
-            <span class="section-comment">// ENGINEERING APPROACH</span>
-            <h2 id="approach-title">HOW WE BUILD</h2>
-
-            <div class="approach-steps" role="list" aria-label="Engineering approach steps">
-                <div class="step" role="listitem">
-                    <span class="step-number" aria-hidden="true">01</span>
-                    <h3>Discovery & Architecture</h3>
-                    <p>Deep understanding of requirements, technical constraints, and desired outcomes. We design systems that are simple, secure, and elegant.</p>
-                </div>
-                <div class="step" role="listitem">
-                    <span class="step-number" aria-hidden="true">02</span>
-                    <h3>Implementation</h3>
-                    <p>Production-ready code with comprehensive testing. Every line is written for clarity, security, and maintainability.</p>
-                </div>
-                <div class="step" role="listitem">
-                    <span class="step-number" aria-hidden="true">03</span>
-                    <h3>Verification & Testing</h3>
-                    <p>Unit tests, integration tests, and security audits. We verify correctness before anything touches production.</p>
-                </div>
-                <div class="step" role="listitem">
-                    <span class="step-number" aria-hidden="true">04</span>
-                    <h3>Deployment & Monitoring</h3>
-                    <p>Careful rollout with monitoring and alerting. We remain vigilant long after the initial launch.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section" aria-labelledby="cta-solutions-title">
-            <h2 id="cta-solutions-title">READY TO BUILD TOMORROW'S INFRASTRUCTURE?</h2>
-            <p>Let's discuss your technical vision and how TimeChainTech can help realize it.</p>
-            <div class="cta-buttons">
-                <a href="contact.html" class="btn btn-primary">SCHEDULE CONSULTATION <span class="btn-arrow" aria-hidden="true">-></span></a>
-                <a href="index.html" class="btn btn-secondary">VIEW OUR VISION</a>
-            </div>
+        <section class="cta-section" aria-labelledby="cta-title">
+            <h2 id="cta-title">Ready to start?</h2>
+            <a href="contact.html" class="btn btn-primary">Get in Touch</a>
         </section>
     </main>
 
-    <footer class="footer" role="contentinfo" aria-label="Site footer" style="view-transition-name: site-footer;">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2025 TimeChainTech. Building the infrastructure for digital civilization.</p>
-            </div>
-        </div>
+    <footer role="contentinfo" aria-label="Site footer">
+        <p>&copy; 2025 TimeChainTech</p>
     </footer>
 
     <script src="script.js"></script>
