@@ -28,7 +28,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .hero-section {
@@ -58,12 +58,12 @@
             margin: 0 auto;
         }
 
-        .glass-card h2 {
+        .nouveau-card h2 {
             font-size: 1.2rem;
             margin-bottom: 0.75rem;
         }
 
-        .glass-card p {
+        .nouveau-card p {
             color: var(--gray-400);
             font-size: 0.9rem;
             line-height: 1.6;
@@ -119,51 +119,161 @@
         </div>
     </nav>
 
+    <!-- Art Nouveau Decorative SVG -->
+    <svg class="nouveau-decoration" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path class="nouveau-curve" d="M0,100 Q360,0 720,100 T1440,100" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+        <path class="nouveau-curve delay" d="M0,120 Q360,20 720,120 T1440,120" fill="none" stroke="url(#tealGradient)" stroke-width="0.5"/>
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+                <stop offset="50%" style="stop-color:#F4D03F;stop-opacity:0.6"/>
+                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+            </linearGradient>
+            <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+                <stop offset="50%" style="stop-color:#5EEAD4;stop-opacity:0.4"/>
+                <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <main id="main-content" role="main">
         <section class="hero-section" aria-labelledby="solutions-title">
             <div class="container">
-                <h1 id="solutions-title">Our Solutions</h1>
+                <div class="section-header">
+                    <span class="section-flourish" aria-hidden="true">&#10087;</span>
+                    <h1 id="solutions-title">Our Solutions</h1>
+                    <span class="section-flourish flipped" aria-hidden="true">&#10087;</span>
+                </div>
                 <p class="hero-tagline">Blockchain infrastructure and development services built for performance, security, and scale.</p>
             </div>
         </section>
 
         <section class="solutions-grid" role="list" aria-label="Our solutions">
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Solana DApps</h2>
                 <p>High-performance decentralized applications leveraging Solana's parallel processing for scalable token systems and financial instruments.</p>
             </article>
 
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Bitcoin Infrastructure</h2>
                 <p>On-chain solutions built on Bitcoin's immutable foundation, including settlement layers, inscriptions, and Layer 2 protocols.</p>
             </article>
 
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Cross-Chain Bridges</h2>
                 <p>Secure interoperability solutions for trustless asset transfer between networks while maintaining security and composability.</p>
             </article>
 
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Custom Tokenomics</h2>
                 <p>Mathematically-designed token systems using game theory and mechanism design to align incentives with project goals.</p>
             </article>
 
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Data Infrastructure</h2>
                 <p>Indexing, caching, and verification systems providing reliable access to on-chain data with cryptographic proof.</p>
             </article>
 
-            <article class="glass-card" role="listitem">
+            <article class="nouveau-card" role="listitem">
+                <div class="card-frame" aria-hidden="true">
+                    <span class="frame-corner tl"></span>
+                    <span class="frame-corner tr"></span>
+                    <span class="frame-corner bl"></span>
+                    <span class="frame-corner br"></span>
+                    <span class="frame-edge top"></span>
+                    <span class="frame-edge bottom"></span>
+                    <span class="frame-edge left"></span>
+                    <span class="frame-edge right"></span>
+                </div>
                 <h2>Security Auditing</h2>
                 <p>Comprehensive smart contract audits to identify vulnerabilities, test edge cases, and provide remediation guidance.</p>
             </article>
         </section>
 
+        <!-- Ornate Divider -->
+        <div class="ornate-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-ornament">&#10022;</span>
+            <span class="divider-line"></span>
+        </div>
+
         <section class="cta-section" aria-labelledby="cta-title">
-            <h2 id="cta-title">Ready to start?</h2>
+            <div class="section-header">
+                <span class="section-flourish" aria-hidden="true">&#10087;</span>
+                <h2 id="cta-title">Ready to start?</h2>
+                <span class="section-flourish flipped" aria-hidden="true">&#10087;</span>
+            </div>
             <a href="contact.html" class="btn btn-primary">Get in Touch</a>
         </section>
     </main>
+
+    <!-- Footer Ornament -->
+    <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
+            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
+            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
+            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <defs>
+                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
+                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
 
     <footer role="contentinfo" aria-label="Site footer">
         <p>&copy; 2025 TimeChainTech</p>

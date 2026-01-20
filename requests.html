@@ -6,7 +6,7 @@
     <title>Request Services - TimeChainTech</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .requests-hero {
@@ -16,6 +16,20 @@
 
         .requests-hero .section-title {
             margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero-flourish {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
         }
 
         .hero-tagline {
@@ -23,21 +37,118 @@
             font-size: 1.1rem;
             max-width: 500px;
             margin: 0 auto;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
 
         .requests-content {
             padding: 4rem 0 6rem;
         }
 
-        .glass-card {
+        .nouveau-card {
             max-width: 600px;
             margin: 0 auto;
             padding: 3rem;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(10, 15, 26, 0.95) 50%, rgba(45, 212, 191, 0.03) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .nouveau-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Card Frame Styles */
+        .card-frame {
+            position: absolute;
+            inset: 8px;
+            pointer-events: none;
+        }
+
+        .frame-corner {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--gold);
+            border-style: solid;
+            border-width: 0;
+            opacity: 0.4;
+            transition: opacity 0.3s ease;
+        }
+
+        .nouveau-card:hover .frame-corner {
+            opacity: 0.7;
+        }
+
+        .frame-corner.tl {
+            top: 0;
+            left: 0;
+            border-top-width: 1px;
+            border-left-width: 1px;
+        }
+
+        .frame-corner.tr {
+            top: 0;
+            right: 0;
+            border-top-width: 1px;
+            border-right-width: 1px;
+        }
+
+        .frame-corner.bl {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+        }
+
+        .frame-corner.br {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 1px;
+            border-right-width: 1px;
+        }
+
+        .frame-edge {
+            position: absolute;
+            background: var(--gold);
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        .nouveau-card:hover .frame-edge {
+            opacity: 0.4;
+        }
+
+        .frame-edge.top,
+        .frame-edge.bottom {
+            height: 1px;
+            width: calc(100% - 60px);
+            left: 30px;
+        }
+
+        .frame-edge.top {
+            top: 0;
+        }
+
+        .frame-edge.bottom {
+            bottom: 0;
+        }
+
+        .frame-edge.left,
+        .frame-edge.right {
+            width: 1px;
+            height: calc(100% - 60px);
+            top: 30px;
+        }
+
+        .frame-edge.left {
+            left: 0;
+        }
+
+        .frame-edge.right {
+            right: 0;
         }
 
         .form-group {
@@ -52,12 +163,13 @@
 
         .form-label {
             display: block;
-            font-size: 0.8rem;
-            color: var(--gray-300);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: var(--gold);
             letter-spacing: 1px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         .form-input,
@@ -65,9 +177,9 @@
         .form-textarea {
             width: 100%;
             padding: 0.875rem 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
             color: var(--white);
             font-family: var(--font-mono);
             font-size: 0.95rem;
@@ -78,19 +190,21 @@
         .form-select:focus,
         .form-textarea:focus {
             outline: none;
-            border-color: var(--bitcoin);
-            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.06);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
         .form-input::placeholder,
         .form-textarea::placeholder {
             color: var(--gray-600);
+            font-style: italic;
         }
 
         .form-select {
             appearance: none;
             cursor: pointer;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23D4AF37' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1rem center;
             padding-right: 2.5rem;
@@ -113,26 +227,43 @@
         .submit-btn {
             width: 100%;
             padding: 1rem;
-            background: var(--bitcoin);
+            background: linear-gradient(135deg, var(--gold) 0%, #B8960C 100%);
             border: none;
-            border-radius: 8px;
+            border-radius: 4px;
             color: var(--black);
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 1px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 2px;
             cursor: pointer;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
         }
 
         .submit-btn:hover {
-            background: var(--bitcoin-light);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         .footer-minimal {
             padding: 3rem 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .footer-minimal .container {
@@ -142,9 +273,9 @@
         }
 
         .footer-logo {
-            font-family: var(--font-mono);
+            font-family: 'Playfair Display', serif;
             font-size: 0.9rem;
-            color: var(--gray-400);
+            color: var(--gold);
         }
 
         .footer-links-minimal {
@@ -156,14 +287,26 @@
             color: var(--gray-500);
             font-size: 0.85rem;
             transition: var(--transition);
+            font-family: 'Playfair Display', serif;
         }
 
         .footer-links-minimal a:hover {
-            color: var(--white);
+            color: var(--gold);
+        }
+
+        /* Footer Ornament */
+        .footer-ornament {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-ornament svg {
+            width: 200px;
+            height: 50px;
         }
 
         @media (max-width: 640px) {
-            .glass-card {
+            .nouveau-card {
                 padding: 2rem 1.5rem;
                 margin: 0 1rem;
             }
@@ -200,9 +343,28 @@
         </div>
     </nav>
 
+    <!-- Art Nouveau Decorative SVG -->
+    <svg class="nouveau-decoration" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path class="nouveau-curve" d="M0,100 Q360,0 720,100 T1440,100" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+        <path class="nouveau-curve delay" d="M0,120 Q360,20 720,120 T1440,120" fill="none" stroke="url(#tealGradient)" stroke-width="0.5"/>
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+                <stop offset="50%" style="stop-color:#F4D03F;stop-opacity:0.6"/>
+                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+            </linearGradient>
+            <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+                <stop offset="50%" style="stop-color:#5EEAD4;stop-opacity:0.4"/>
+                <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <main id="main-content" role="main">
         <section class="requests-hero" aria-labelledby="requests-title">
             <div class="container">
+                <span class="hero-flourish" aria-hidden="true">✦</span>
                 <h1 id="requests-title" class="section-title">Request <span class="gradient-text">Services</span></h1>
                 <p class="hero-tagline">Tell us about your blockchain project. We'll get back to you within 48 hours.</p>
             </div>
@@ -210,7 +372,17 @@
 
         <section class="requests-content">
             <div class="container">
-                <div class="glass-card">
+                <div class="nouveau-card">
+                    <div class="card-frame" aria-hidden="true">
+                        <span class="frame-corner tl"></span>
+                        <span class="frame-corner tr"></span>
+                        <span class="frame-corner bl"></span>
+                        <span class="frame-corner br"></span>
+                        <span class="frame-edge top"></span>
+                        <span class="frame-edge bottom"></span>
+                        <span class="frame-edge left"></span>
+                        <span class="frame-edge right"></span>
+                    </div>
                     <form action="#" method="POST" id="projectRequestForm">
                         <div class="form-row">
                             <div class="form-group">
@@ -262,6 +434,23 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer Ornament -->
+    <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
+            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
+            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
+            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <defs>
+                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
+                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
 
     <footer class="footer-minimal" role="contentinfo">
         <div class="container">
