@@ -1,19 +1,21 @@
 /* ==========================================================================
-   TIMECHAINTECH - Minimalist Glassmorphism Design
-   Executive Blue Color Palette
+   TIMECHAINTECH - Arctic Cyan Cosmic Glassmorphism Design
+   Deep Space Color Palette with Cyan Accents
    ========================================================================== */
 
 :root {
-    --primary-bg: #0A1628;
-    --secondary-bg: #111827;
+    --primary-bg: #0c1929;
+    --secondary-bg: #0f1e32;
     --accent: #38BDF8;
     --accent-hover: #0EA5E9;
-    --text-primary: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --accent-glow: rgba(56, 189, 248, 0.4);
+    --text-primary: #ffffff;
+    --text-secondary: #a0c4e8;
+    --text-muted: #6b8ab0;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --glass-highlight: rgba(255, 255, 255, 0.1);
 
     --font-mono: 'JetBrains Mono', monospace;
     --font-display: 'Bebas Neue', sans-serif;
@@ -26,21 +28,21 @@
    Glassmorphism Utility Classes
    ========================================================================== */
 .glass-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 16px;
-    box-shadow: var(--glass-shadow);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-card-sm {
-    background: var(--glass-bg);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 /* ==========================================================================
@@ -54,10 +56,100 @@
 
 body {
     font-family: var(--font-mono);
-    background: var(--primary-bg);
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(15, 30, 50, 1) 0%, #0c1929 100%);
+    background-attachment: fixed;
     color: var(--text-primary);
     line-height: 1.7;
     overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Cosmic Stars Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, rgba(255, 255, 255, 0.8), transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 50px 160px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1.5px 1.5px at 160px 120px, rgba(56, 189, 248, 0.9), transparent),
+        radial-gradient(1px 1px at 200px 50px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 220px 150px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 250px 90px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1.5px 1.5px at 280px 200px, rgba(56, 189, 248, 0.8), transparent),
+        radial-gradient(1px 1px at 310px 60px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 350px 180px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 380px 30px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 420px 130px, rgba(255, 255, 255, 0.4), transparent),
+        radial-gradient(1.5px 1.5px at 450px 80px, rgba(56, 189, 248, 0.7), transparent),
+        radial-gradient(1px 1px at 480px 220px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 520px 45px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 560px 170px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1px 1px at 600px 100px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 640px 240px, rgba(56, 189, 248, 0.8), transparent);
+    background-repeat: repeat;
+    background-size: 700px 300px;
+    animation: twinkle 8s ease-in-out infinite alternate;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        radial-gradient(1px 1px at 70px 110px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 110px 200px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1.5px 1.5px at 170px 50px, rgba(56, 189, 248, 0.7), transparent),
+        radial-gradient(1px 1px at 230px 140px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 290px 230px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 330px 100px, rgba(255, 255, 255, 0.7), transparent),
+        radial-gradient(1.5px 1.5px at 390px 190px, rgba(56, 189, 248, 0.6), transparent),
+        radial-gradient(1px 1px at 430px 70px, rgba(255, 255, 255, 0.5), transparent),
+        radial-gradient(1px 1px at 490px 160px, rgba(255, 255, 255, 0.6), transparent),
+        radial-gradient(1px 1px at 550px 250px, rgba(255, 255, 255, 0.4), transparent);
+    background-repeat: repeat;
+    background-size: 600px 350px;
+    animation: twinkle 12s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.6; }
+}
+
+/* Cosmic Background Drift Animation */
+@keyframes cosmicDrift {
+    0% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+    50% {
+        background-position: 10% 20%, 90% 80%, 50% 50%;
+    }
+    100% {
+        background-position: 0% 0%, 100% 100%, 50% 50%;
+    }
+}
+
+body {
+    animation: cosmicDrift 30s ease-in-out infinite;
 }
 
 .container {
@@ -241,7 +333,11 @@ body {
     line-height: 0.95;
     margin-bottom: 2.5rem;
     letter-spacing: -2px;
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #38BDF8 0%, #ffffff 40%, #38BDF8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
 }
 
 .title-line {
@@ -249,10 +345,18 @@ body {
 }
 
 .gradient-text {
-    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+    background: linear-gradient(135deg, #38BDF8 0%, #ffffff 50%, #38BDF8 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    background-size: 200% auto;
+    animation: gradientShimmer 4s ease-in-out infinite;
+}
+
+@keyframes gradientShimmer {
+    0% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+    100% { background-position: 0% center; }
 }
 
 .hero-subtitle {
@@ -290,29 +394,48 @@ body {
 }
 
 .btn-primary {
-    background: var(--accent);
-    border-color: var(--accent);
+    background: linear-gradient(135deg, #38BDF8, #0EA5E9);
+    border-color: transparent;
     color: var(--primary-bg);
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
 }
 
 .btn-primary:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
-    box-shadow: 0 0 30px rgba(56, 189, 248, 0.3);
-    transform: scale(1.02);
+    background: linear-gradient(135deg, #5cc9f9, #38BDF8);
+    box-shadow: 0 6px 25px rgba(56, 189, 248, 0.6), 0 0 40px rgba(56, 189, 248, 0.3);
+    transform: scale(1.02) translateY(-2px);
 }
 
 .btn-secondary {
-    background: transparent;
-    border-color: var(--glass-border);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
     color: var(--text-primary);
+    backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
     border-color: var(--accent);
     color: var(--accent);
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
-    transform: scale(1.02);
+    background: rgba(56, 189, 248, 0.1);
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.25), inset 0 0 20px rgba(56, 189, 248, 0.05);
+    transform: scale(1.02) translateY(-2px);
 }
 
 .btn-arrow {
