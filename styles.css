@@ -658,6 +658,275 @@ body {
     .nouveau-corner {
         display: none;
     }
+
+    .wave-divider {
+        height: 60px;
+        margin-top: -30px;
+    }
+
+    .ornate-divider {
+        padding: 2rem 0;
+    }
+
+    .divider-line {
+        width: 50px;
+    }
+
+    .value-prop::before,
+    .value-prop::after,
+    .cta-section::before {
+        display: none;
+    }
+
+    .btn-primary::before,
+    .btn-primary::after {
+        display: none;
+    }
+}
+
+/* ==========================================================================
+   Art Nouveau Decorative Elements - Enhanced
+   ========================================================================== */
+
+/* Wave Divider */
+.wave-divider {
+    position: relative;
+    height: 120px;
+    margin-top: -60px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.wave-divider svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Ornate Divider */
+.ornate-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 0;
+}
+
+.divider-line {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.divider-ornament {
+    color: var(--gold);
+    font-size: 1.25rem;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+}
+
+/* Footer Ornament */
+.footer-ornament {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 0;
+}
+
+.footer-ornament svg {
+    width: 200px;
+    height: 50px;
+}
+
+/* Enhanced Card Borders - Ornate Frame */
+.nouveau-card {
+    position: relative;
+    overflow: visible;
+}
+
+.nouveau-card::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        135deg,
+        var(--gold) 0%,
+        transparent 25%,
+        transparent 75%,
+        var(--teal) 100%
+    );
+    border-radius: 6px;
+    z-index: -1;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.nouveau-card:hover::before {
+    opacity: 0.5;
+}
+
+/* Corner Flourishes on Cards */
+.nouveau-card::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px solid transparent;
+    border-image: linear-gradient(
+        135deg,
+        rgba(212, 175, 55, 0.3) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(45, 212, 191, 0.3) 100%
+    ) 1;
+    pointer-events: none;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.nouveau-card:hover::after {
+    opacity: 1;
+}
+
+/* Background Filigree Pattern */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.03;
+    background-image:
+        radial-gradient(circle at 20% 30%, var(--gold) 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, var(--teal) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, var(--gold) 0.5px, transparent 0.5px),
+        radial-gradient(circle at 60% 20%, var(--teal) 0.5px, transparent 0.5px);
+    background-size: 100px 100px, 120px 120px, 80px 80px, 90px 90px;
+}
+
+/* Animated Border Glow */
+@keyframes borderGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 20px rgba(212, 175, 55, 0.1),
+            inset 0 0 20px rgba(212, 175, 55, 0.05);
+    }
+    50% {
+        box-shadow:
+            0 0 40px rgba(212, 175, 55, 0.2),
+            inset 0 0 30px rgba(212, 175, 55, 0.1);
+    }
+}
+
+.hero {
+    animation: borderGlow 8s ease-in-out infinite;
+}
+
+/* Enhanced Hero Corners */
+.nouveau-corner {
+    width: 80px;
+    height: 80px;
+}
+
+.nouveau-corner::before {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), var(--teal), transparent);
+}
+
+.nouveau-corner::after {
+    width: 2px;
+    height: 60px;
+    background: linear-gradient(180deg, var(--gold), var(--teal), transparent);
+}
+
+.nouveau-corner.top-right::before,
+.nouveau-corner.bottom-right::before {
+    background: linear-gradient(90deg, transparent, var(--teal), var(--gold));
+}
+
+/* Vine-like decorations on section edges */
+.value-prop::before,
+.cta-section::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 60%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--gold) 20%,
+        var(--teal) 50%,
+        var(--gold) 80%,
+        transparent 100%
+    );
+    opacity: 0.2;
+}
+
+.value-prop::after {
+    content: '';
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 60%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        var(--teal) 20%,
+        var(--gold) 50%,
+        var(--teal) 80%,
+        transparent 100%
+    );
+    opacity: 0.2;
+}
+
+/* Hover card inner glow */
+.nouveau-card:hover {
+    background: rgba(26, 31, 46, 0.9);
+}
+
+/* Button flourish on hover */
+.btn-primary::before {
+    content: '✦';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    color: var(--primary-bg);
+    font-size: 0.75rem;
+    transition: var(--transition);
+}
+
+.btn-primary::after {
+    content: '✦';
+    position: absolute;
+    right: -20px;
+    opacity: 0;
+    color: var(--primary-bg);
+    font-size: 0.75rem;
+    transition: var(--transition);
+}
+
+.btn-primary:hover::before {
+    left: 12px;
+    opacity: 0.6;
+}
+
+.btn-primary:hover::after {
+    right: 12px;
+    opacity: 0.6;
 }
 
 /* ==========================================================================
