@@ -20,7 +20,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
         .contact-hero {
@@ -29,10 +29,15 @@
         }
 
         .contact-hero h1 {
-            font-family: var(--font-display);
+            font-family: 'Playfair Display', serif;
             font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 500;
             letter-spacing: 2px;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--gold, #D4AF37) 50%, #fff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .contact-hero p {
@@ -55,21 +60,36 @@
             align-items: start;
         }
 
-        /* Glass Card */
-        .glass-card {
-            background: rgba(30, 30, 30, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* Hero Flourish */
+        .hero-flourish {
+            display: block;
+            font-size: 1.5rem;
+            color: var(--gold, #D4AF37);
+            margin-bottom: 1rem;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Nouveau Card Contact Form */
+        .nouveau-card {
+            position: relative;
+            background: linear-gradient(145deg, rgba(15, 20, 30, 0.9), rgba(10, 15, 25, 0.95));
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 16px;
             padding: 2.5rem;
         }
 
-        .glass-card h2 {
-            font-family: var(--font-display);
+        .nouveau-card h2 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
+            font-weight: 500;
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
+            color: var(--gold, #D4AF37);
         }
 
         /* Contact Form */
@@ -86,32 +106,36 @@
         }
 
         .form-group label {
-            font-size: 0.8rem;
-            color: var(--gray-300);
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: rgba(212, 175, 55, 0.8);
             letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .form-group input,
         .form-group textarea {
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(10, 15, 25, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 8px;
-            color: var(--white);
-            font-family: var(--font-mono);
+            color: var(--white, #fff);
+            font-family: var(--font-mono, 'JetBrains Mono', monospace);
             font-size: 0.95rem;
             padding: 0.875rem 1rem;
-            transition: border-color 0.2s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--bitcoin);
+            border-color: var(--gold, #D4AF37);
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
         }
 
         .form-group input::placeholder,
         .form-group textarea::placeholder {
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.3);
         }
 
         .form-group textarea {
@@ -121,23 +145,40 @@
         }
 
         .submit-btn {
-            background: var(--bitcoin);
+            background: linear-gradient(135deg, var(--gold, #D4AF37), #F4D03F);
             border: none;
             border-radius: 8px;
-            color: var(--black);
+            color: #0a0f1a;
             cursor: pointer;
-            font-family: var(--font-mono);
-            font-size: 0.9rem;
-            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
             letter-spacing: 1px;
             margin-top: 0.5rem;
             padding: 1rem 2rem;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .submit-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
         }
 
         /* Contact Info */
@@ -146,30 +187,35 @@
         }
 
         .contact-info h2 {
-            font-family: var(--font-display);
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
+            font-weight: 500;
             letter-spacing: 1px;
             margin-bottom: 1.5rem;
+            color: var(--gold, #D4AF37);
         }
 
         .contact-info p {
-            color: var(--gray-300);
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.8;
             margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .email-link {
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
-            color: var(--bitcoin);
+            color: var(--gold, #D4AF37);
             font-size: 1.1rem;
             text-decoration: none;
-            transition: opacity 0.2s ease;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .email-link:hover {
-            opacity: 0.8;
+            color: #F4D03F;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
 
         .email-icon {
@@ -189,14 +235,14 @@
                 padding-top: 0;
             }
 
-            .glass-card {
+            .nouveau-card {
                 padding: 2rem;
             }
         }
 
         /* Minimal Footer */
         .footer-minimal {
-            border-top: 1px solid var(--gray-800);
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
             padding: 2rem 0;
         }
 
@@ -209,8 +255,9 @@
         }
 
         .footer-minimal p {
-            color: var(--gray-500);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.85rem;
+            font-family: 'Playfair Display', serif;
         }
 
         .footer-nav {
@@ -219,14 +266,27 @@
         }
 
         .footer-nav a {
-            color: var(--gray-400);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.85rem;
+            font-family: 'Playfair Display', serif;
             text-decoration: none;
-            transition: color 0.2s ease;
+            transition: color 0.3s ease;
         }
 
         .footer-nav a:hover {
-            color: var(--white);
+            color: var(--gold, #D4AF37);
+        }
+
+        /* Footer Ornament */
+        .footer-ornament {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0 0;
+        }
+
+        .footer-ornament svg {
+            width: 200px;
+            height: 50px;
         }
     </style>
 </head>
@@ -250,9 +310,28 @@
         </div>
     </nav>
 
+    <!-- Art Nouveau Decorative SVG -->
+    <svg class="nouveau-decoration" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none">
+        <path class="nouveau-curve" d="M0,100 Q360,0 720,100 T1440,100" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
+        <path class="nouveau-curve delay" d="M0,120 Q360,20 720,120 T1440,120" fill="none" stroke="url(#tealGradient)" stroke-width="0.5"/>
+        <defs>
+            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+                <stop offset="50%" style="stop-color:#F4D03F;stop-opacity:0.6"/>
+                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
+            </linearGradient>
+            <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+                <stop offset="50%" style="stop-color:#5EEAD4;stop-opacity:0.4"/>
+                <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <main id="main-content" role="main">
         <section class="contact-hero">
             <div class="container">
+                <span class="hero-flourish" aria-hidden="true">✦</span>
                 <h1>Get in Touch</h1>
                 <p>Have a question or want to work together? I'd love to hear from you.</p>
             </div>
@@ -261,7 +340,17 @@
         <section class="contact-section">
             <div class="container">
                 <div class="contact-layout">
-                    <div class="glass-card">
+                    <div class="nouveau-card">
+                        <div class="card-frame" aria-hidden="true">
+                            <span class="frame-corner tl"></span>
+                            <span class="frame-corner tr"></span>
+                            <span class="frame-corner bl"></span>
+                            <span class="frame-corner br"></span>
+                            <span class="frame-edge top"></span>
+                            <span class="frame-edge bottom"></span>
+                            <span class="frame-edge left"></span>
+                            <span class="frame-edge right"></span>
+                        </div>
                         <h2>Send a Message</h2>
                         <form class="contact-form" action="#" method="POST">
                             <div class="form-group">
@@ -301,6 +390,23 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer Ornament -->
+    <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
+            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
+            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
+            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <defs>
+                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
+                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
 
     <footer class="footer-minimal" role="contentinfo">
         <div class="container">
