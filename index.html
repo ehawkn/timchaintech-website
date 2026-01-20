@@ -84,6 +84,20 @@
             <div class="nouveau-corner bottom-right" aria-hidden="true"></div>
         </section>
 
+        <!-- Wave Divider -->
+        <div class="wave-divider" aria-hidden="true">
+            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+                <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="url(#waveGradient)"/>
+                <path d="M0,80 Q360,20 720,80 T1440,80" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.3"/>
+                <defs>
+                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#0a0f1a;stop-opacity:0"/>
+                        <stop offset="100%" style="stop-color:#0a0f1a;stop-opacity:1"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
         <section class="value-prop" aria-labelledby="value-prop-title">
             <div class="container">
                 <div class="section-header">
@@ -120,6 +134,13 @@
             </div>
         </section>
 
+        <!-- Ornate Divider -->
+        <div class="ornate-divider" aria-hidden="true">
+            <span class="divider-line"></span>
+            <span class="divider-ornament">✦</span>
+            <span class="divider-line"></span>
+        </div>
+
         <section class="cta-section" aria-labelledby="cta-title">
             <div class="container">
                 <span class="cta-flourish" aria-hidden="true">✧</span>
@@ -130,6 +151,23 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer Ornament -->
+    <div class="footer-ornament" aria-hidden="true">
+        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
+            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
+            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
+            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
+            <defs>
+                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
+                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
+                </linearGradient>
+            </defs>
+        </svg>
+    </div>
 
     <footer class="footer" role="contentinfo" aria-label="Site footer">
         <div class="container">
