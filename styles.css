@@ -1092,3 +1092,437 @@ body::after {
 .text-teal {
     color: var(--teal);
 }
+
+/* ==========================================================================
+   Fun Interactive Features
+   ========================================================================== */
+
+/* Scroll Progress Bar */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(212, 175, 55, 0.1);
+    z-index: 9999;
+}
+
+.scroll-progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--gold), var(--teal));
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    color: var(--gold);
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--gold);
+    color: var(--primary-bg);
+    border-color: var(--gold);
+    box-shadow: 0 0 20px var(--gold-glow);
+}
+
+/* Konami Code Easter Egg - Satoshi Mode */
+#satoshi-mode {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 15, 26, 0.98);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+#satoshi-mode.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.satoshi-content {
+    text-align: center;
+    max-width: 600px;
+    padding: 3rem;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.5s ease;
+}
+
+#satoshi-mode.active .satoshi-content {
+    transform: scale(1) translateY(0);
+}
+
+.satoshi-symbol {
+    font-size: 6rem;
+    color: var(--gold);
+    animation: float 3s ease-in-out infinite;
+    text-shadow: 0 0 60px var(--gold-glow);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.satoshi-content h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin: 1rem 0;
+}
+
+.satoshi-quote {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin: 2rem 0 1rem;
+}
+
+.satoshi-attribution {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.satoshi-close {
+    margin-top: 3rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--gold), #C9A227);
+    border: none;
+    color: var(--primary-bg);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.satoshi-close:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--gold-glow);
+}
+
+/* Interactive Section */
+.interactive-section {
+    padding: 6rem 0;
+    position: relative;
+}
+
+.timechain-wrapper {
+    margin: 2rem 0;
+}
+
+/* Hash Visualizer */
+.hash-visualizer {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.hash-visualizer h4 {
+    font-family: var(--font-serif);
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.hash-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.hash-input:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 10px var(--gold-glow);
+}
+
+.hash-output {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--teal);
+    word-break: break-all;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    transition: opacity 0.15s ease;
+}
+
+.hash-output.updating {
+    opacity: 0.3;
+}
+
+.hash-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Timechain Visualization */
+.timechain-visual {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+.chain-block {
+    min-width: 100px;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid var(--gold);
+    border-radius: 4px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.5s ease;
+}
+
+.chain-block.mined {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.block-number {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.block-hash {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--teal);
+    margin: 0.5rem 0;
+}
+
+.block-time {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+}
+
+.chain-link {
+    color: var(--gold);
+    font-size: 1.25rem;
+    opacity: 0.5;
+    animation: pulse-link 2s ease-in-out infinite;
+}
+
+@keyframes pulse-link {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* Satoshi Quote Rotator */
+.quote-container {
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+#satoshi-quote {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: opacity 0.5s ease;
+}
+
+#satoshi-quote.fading {
+    opacity: 0;
+}
+
+.quote-attribution {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--gold);
+}
+
+/* Block Counter */
+.block-counter {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 1rem;
+}
+
+.counter-value {
+    color: var(--gold);
+    font-weight: 600;
+}
+
+.counter-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* Mobile Menu Styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.menu-toggle span {
+    width: 20px;
+    height: 2px;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--primary-bg);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-links .nav-link {
+        font-size: 1.25rem;
+    }
+
+    .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .hash-visualizer,
+    .timechain-visual {
+        margin: 1rem 0;
+    }
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    z-index: 10000;
+    animation: slideIn 0.3s ease;
+}
+
+.notification-success {
+    border-color: var(--teal);
+}
+
+.notification-error {
+    border-color: #ef4444;
+}
+
+.notification.fade-out {
+    animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
