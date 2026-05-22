@@ -1,270 +1,563 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TimeChainTech - Building on Internet Capital Markets</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="TimeChainTech builds blockchain infrastructure on Bitcoin and Solana, leveraging internet capital markets as self-organizing databases for valuing information.">
-    <link rel="canonical" href="https://timechaintech.com/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://timechaintech.com/">
-    <meta property="og:title" content="TimeChainTech - Building on Internet Capital Markets">
-    <meta property="og:description" content="TimeChainTech builds blockchain infrastructure on Bitcoin and Solana, leveraging internet capital markets as self-organizing databases for valuing information.">
-    <meta property="og:image" content="https://timechaintech.com/og-image.png">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://timechaintech.com/">
-    <meta name="twitter:title" content="TimeChainTech - Building on Internet Capital Markets">
-    <meta name="twitter:description" content="TimeChainTech builds blockchain infrastructure on Bitcoin and Solana, leveraging internet capital markets as self-organizing databases for valuing information.">
-    <meta name="twitter:image" content="https://timechaintech.com/og-image.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a1a1a' width='32' height='32' rx='6'/%3E%3Crect fill='%23f7931a' x='4' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='20' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='12' y='20' width='8' height='8' rx='2'/%3E%3Cline x1='8' y1='12' x2='8' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='24' y1='12' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='8' y1='24' x2='12' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='20' y1='24' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3C/svg%3E">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timechain Technologies — Secure IT Modernization for Federal, Defense, and Regulated Operations</title>
+  <meta name="description" content="Veteran-owned IT modernization firm delivering endpoint compliance, enterprise mobility, CMMC readiness, and AI-enabled operations to federal, defense, and regulated organizations. UEI HBGWBBJVYMK1.">
+  <meta name="theme-color" content="#141B2B">
+  <link rel="icon" type="image/png" href="assets/img/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="TimeChainTech - Home">
-                <span class="logo-bracket" aria-hidden="true">[</span>
-                <span class="logo-text">TimeChainTech</span>
-                <span class="logo-bracket" aria-hidden="true">]</span>
-            </a>
-            <div class="nav-links" role="menubar">
-                <a href="index.html" class="nav-link active" role="menuitem" aria-current="page">HOME</a>
-                <a href="about.html" class="nav-link" role="menuitem">ABOUT</a>
-                <a href="solutions.html" class="nav-link" role="menuitem">SOLUTIONS</a>
-                <a href="requests.html" class="nav-link" role="menuitem">REQUESTS</a>
-                <a href="contact.html" class="nav-link" role="menuitem">CONTACT</a>
-            </div>
-        </div>
+<!-- ===== Top navigation ===== -->
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="topbar__brand" aria-label="Timechain Technologies — Home">
+      <img src="assets/img/logo-horizontal.png" alt="Timechain Technologies">
+    </a>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="services.html">Services</a>
+      <a href="federal-contracting.html">Federal Contracting</a>
+      <a href="ai-operations.html">AI Operations</a>
+      <a href="cmmc-cyber-readiness.html">Cyber Readiness</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
-
-    <!-- Art Nouveau Decorative SVG -->
-    <svg class="nouveau-decoration" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none">
-        <path class="nouveau-curve" d="M0,100 Q360,0 720,100 T1440,100" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
-        <path class="nouveau-curve delay" d="M0,120 Q360,20 720,120 T1440,120" fill="none" stroke="url(#tealGradient)" stroke-width="0.5"/>
-        <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
-                <stop offset="50%" style="stop-color:#F4D03F;stop-opacity:0.6"/>
-                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
-            </linearGradient>
-            <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
-                <stop offset="50%" style="stop-color:#5EEAD4;stop-opacity:0.4"/>
-                <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
-            </linearGradient>
-        </defs>
-    </svg>
-
-    <main id="main-content" role="main">
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="nouveau-corner top-left" aria-hidden="true"></div>
-            <div class="nouveau-corner top-right" aria-hidden="true"></div>
-            <div class="container">
-                <span class="hero-flourish" aria-hidden="true">✦</span>
-                <h1 id="hero-title" class="hero-title">Blockchain Infrastructure<br><em>for Tomorrow</em></h1>
-                <p class="hero-subtitle">Elegant solutions crafted on Bitcoin & Solana</p>
-                <a href="contact.html" class="btn btn-primary">
-                    <span>Begin Your Journey</span>
-                </a>
-            </div>
-            <div class="nouveau-corner bottom-left" aria-hidden="true"></div>
-            <div class="nouveau-corner bottom-right" aria-hidden="true"></div>
-        </section>
-
-        <!-- Wave Divider -->
-        <div class="wave-divider" aria-hidden="true">
-            <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="url(#waveGradient)"/>
-                <path d="M0,80 Q360,20 720,80 T1440,80" fill="none" stroke="var(--gold)" stroke-width="0.5" opacity="0.3"/>
-                <defs>
-                    <linearGradient id="waveGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#0a0f1a;stop-opacity:0"/>
-                        <stop offset="100%" style="stop-color:#0a0f1a;stop-opacity:1"/>
-                    </linearGradient>
-                </defs>
-            </svg>
-        </div>
-
-        <section class="value-prop" aria-labelledby="value-prop-title">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-flourish" aria-hidden="true">❧</span>
-                    <h2 id="value-prop-title" class="section-title">Our Craft</h2>
-                    <span class="section-flourish flipped" aria-hidden="true">❧</span>
-                </div>
-                <div class="prop-grid" role="list" aria-label="Value propositions">
-                    <article class="nouveau-card" role="listitem">
-                        <div class="card-frame" aria-hidden="true">
-                            <span class="frame-corner tl"></span>
-                            <span class="frame-corner tr"></span>
-                            <span class="frame-corner bl"></span>
-                            <span class="frame-corner br"></span>
-                            <span class="frame-edge top"></span>
-                            <span class="frame-edge bottom"></span>
-                            <span class="frame-edge left"></span>
-                            <span class="frame-edge right"></span>
-                        </div>
-                        <div class="card-ornament top" aria-hidden="true"></div>
-                        <h3 class="prop-title">Self-Organizing Systems</h3>
-                        <p class="prop-text">
-                            Distributed databases that orchestrate themselves through elegant economic incentives.
-                        </p>
-                        <div class="card-ornament bottom" aria-hidden="true"></div>
-                    </article>
-                    <article class="nouveau-card" role="listitem">
-                        <div class="card-frame" aria-hidden="true">
-                            <span class="frame-corner tl"></span>
-                            <span class="frame-corner tr"></span>
-                            <span class="frame-corner bl"></span>
-                            <span class="frame-corner br"></span>
-                            <span class="frame-edge top"></span>
-                            <span class="frame-edge bottom"></span>
-                            <span class="frame-edge left"></span>
-                            <span class="frame-edge right"></span>
-                        </div>
-                        <div class="card-ornament top" aria-hidden="true"></div>
-                        <h3 class="prop-title">Information as Value</h3>
-                        <p class="prop-text">
-                            Where data transforms into verifiable, tradeable assets through transparent mechanisms.
-                        </p>
-                        <div class="card-ornament bottom" aria-hidden="true"></div>
-                    </article>
-                    <article class="nouveau-card" role="listitem">
-                        <div class="card-frame" aria-hidden="true">
-                            <span class="frame-corner tl"></span>
-                            <span class="frame-corner tr"></span>
-                            <span class="frame-corner bl"></span>
-                            <span class="frame-corner br"></span>
-                            <span class="frame-edge top"></span>
-                            <span class="frame-edge bottom"></span>
-                            <span class="frame-edge left"></span>
-                            <span class="frame-edge right"></span>
-                        </div>
-                        <div class="card-ornament top" aria-hidden="true"></div>
-                        <h3 class="prop-title">Artful Innovation</h3>
-                        <p class="prop-text">
-                            Bridging infrastructure with real-world applications through meticulous engineering.
-                        </p>
-                        <div class="card-ornament bottom" aria-hidden="true"></div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ornate Divider -->
-        <div class="ornate-divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-ornament">✦</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <!-- Interactive Blockchain Section -->
-        <section class="interactive-section" aria-labelledby="interactive-title">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-flourish" aria-hidden="true">❧</span>
-                    <h2 id="interactive-title" class="section-title">Experience the Timechain</h2>
-                    <span class="section-flourish flipped" aria-hidden="true">❧</span>
-                </div>
-
-                <!-- Live Hash Visualizer -->
-                <div id="hash-visualizer" class="hash-visualizer">
-                    <h4>🔐 SHA-256 Hash Visualizer</h4>
-                    <p class="hash-label">Type anything to see its cryptographic hash:</p>
-                    <input type="text" class="hash-input" placeholder="Enter text to hash..." value="TimeChainTech">
-                    <p class="hash-label">SHA-256 Output:</p>
-                    <div class="hash-output">Computing...</div>
-                </div>
-
-                <!-- Animated Timechain -->
-                <div class="timechain-wrapper">
-                    <h4 style="font-family: var(--font-serif); color: var(--gold); margin-bottom: 1rem; text-align: center;">⛓️ Live Timechain Visualization</h4>
-                    <div id="timechain-visual" class="timechain-visual"></div>
-                </div>
-
-                <!-- Block Counter -->
-                <div id="block-counter" class="block-counter"></div>
-
-                <!-- Satoshi Quote -->
-                <div class="quote-container">
-                    <p id="satoshi-quote"></p>
-                    <p class="quote-attribution">— Satoshi Nakamoto</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ornate Divider -->
-        <div class="ornate-divider" aria-hidden="true">
-            <span class="divider-line"></span>
-            <span class="divider-ornament">✧</span>
-            <span class="divider-line"></span>
-        </div>
-
-        <section class="cta-section" aria-labelledby="cta-title">
-            <div class="container">
-                <span class="cta-flourish" aria-hidden="true">✧</span>
-                <h2 id="cta-title" class="cta-title">Ready to Create Together?</h2>
-                <a href="contact.html" class="btn btn-primary">
-                    <span>Start a Conversation</span>
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Ornament -->
-    <div class="footer-ornament" aria-hidden="true">
-        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
-            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
-            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
-            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
-            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
-            <defs>
-                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
-                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
-                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
-                </linearGradient>
-            </defs>
-        </svg>
+    <div class="topbar__cta">
+      <a href="assets/pdf/timechain-capability-statement.pdf" class="btn btn--primary btn--sm" download>Capability Statement</a>
     </div>
+    <button class="topbar__burger" aria-label="Toggle navigation" aria-expanded="false">☰ Menu</button>
+  </div>
+</header>
 
-    <footer class="footer" role="contentinfo" aria-label="Site footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <div class="footer-logo" aria-hidden="true">
-                        <span class="logo-bracket">[</span>
-                        <span class="logo-text">TimeChainTech</span>
-                        <span class="logo-bracket">]</span>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <nav class="footer-links" aria-label="Footer navigation">
-                        <a href="about.html">About</a>
-                        <a href="solutions.html">Solutions</a>
-                        <a href="contact.html">Contact</a>
-                    </nav>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 TimeChainTech</p>
-            </div>
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div>
+        <div class="badge-row hero__badges">
+          <span class="badge badge--accent badge--dot">UEI HBGWBBJVYMK1</span>
+          <span class="badge">NAICS 541512</span>
+          <span class="badge">St. Louis, Missouri</span>
         </div>
-    </footer>
+        <h1>Senior IT Modernization. Federal-Ready. Veteran-Owned.</h1>
+        <p class="lead">Endpoint, patch, mobility, cyber readiness, and AI operations — delivered by senior practitioners without integrator overhead.</p>
+        <div class="btn-group hero__cta">
+          <a href="assets/pdf/timechain-capability-statement.pdf" class="btn btn--primary btn--lg" download>Download Capability Statement</a>
+          <a href="contact.html" class="btn btn--secondary btn--lg">Schedule a Capability Briefing</a>
+        </div>
+        <div class="hero__meta">
+          <span><strong>~20,000</strong> endpoints supported</span>
+          <span><strong>90% → 97.5%</strong> patch compliance lift</span>
+          <span><strong>5,000+</strong> devices migrated</span>
+        </div>
+      </div>
+      <div class="hero__visual" aria-hidden="true">
+        <!-- Abstract secure endpoint operations panel -->
+        <svg class="hero-visual-svg" viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg">
+          <!-- Header bar -->
+          <rect x="0" y="0" width="480" height="34" fill="#141B2B"/>
+          <circle cx="14" cy="17" r="4" fill="#2563EB"/>
+          <text x="26" y="21" font-family="IBM Plex Mono, monospace" font-size="10" fill="#FFFFFF" letter-spacing="1.2">ENDPOINT_COMPLIANCE / FLEET_VIEW</text>
+          <text x="380" y="21" font-family="IBM Plex Mono, monospace" font-size="9" fill="#94A3B8" letter-spacing="0.6">LIVE · 0:09:42</text>
 
-    <script src="script.js"></script>
+          <!-- Sub-header metrics -->
+          <g transform="translate(20, 50)">
+            <text class="label" x="0" y="0">COMPLIANT</text>
+            <text x="0" y="22" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="600" fill="#0F172A" letter-spacing="-0.5">97.5%</text>
+
+            <text class="label" x="130" y="0">FLAGGED</text>
+            <text x="130" y="22" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="600" fill="#0F172A" letter-spacing="-0.5">2.5%</text>
+
+            <text class="label" x="240" y="0">DEVICES</text>
+            <text x="240" y="22" font-family="IBM Plex Mono, monospace" font-size="22" font-weight="600" fill="#0F172A" letter-spacing="-0.5">19,847</text>
+          </g>
+
+          <!-- Compliance meter bar -->
+          <g transform="translate(20, 90)">
+            <rect class="meter-bar" x="0" y="0" width="440" height="6" rx="3"/>
+            <rect class="meter-fill" x="0" y="0" width="429" height="6" rx="3"/>
+          </g>
+
+          <!-- Endpoint grid label -->
+          <text class="label" x="20" y="120">FLEET STATUS / DEPLOYMENT RINGS</text>
+
+          <!-- Endpoint grid: 12 cols × 5 rows = 60 dots -->
+          <g transform="translate(20, 130)">
+            <!-- generated below -->
+          </g>
+
+          <!-- Endpoint grid generated -->
+          <g transform="translate(20, 130)">
+            <!-- Row 1 -->
+            <rect class="endpoint compliant" x="0"   y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="100" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="260" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint flagged"   x="300" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="400" y="0"  width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="0"  width="14" height="14" rx="1.5"/>
+            <!-- Row 2 -->
+            <rect class="endpoint compliant" x="0"   y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="100" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint flagged"   x="260" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="300" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="400" y="20" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="20" width="14" height="14" rx="1.5"/>
+            <!-- Row 3 -->
+            <rect class="endpoint compliant" x="0"   y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint flagged"   x="100" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="260" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="300" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="400" y="40" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="40" width="14" height="14" rx="1.5"/>
+            <!-- Row 4 -->
+            <rect class="endpoint compliant" x="0"   y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="100" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="260" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="300" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint flagged"   x="400" y="60" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="60" width="14" height="14" rx="1.5"/>
+            <!-- Row 5 -->
+            <rect class="endpoint compliant" x="0"   y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="100" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="260" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="300" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="400" y="80" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="80" width="14" height="14" rx="1.5"/>
+            <!-- Row 6 -->
+            <rect class="endpoint compliant" x="0"   y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="20"  y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="40"  y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="60"  y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="80"  y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="100" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="120" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="140" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="160" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="180" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="200" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="220" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="240" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="260" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="280" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="300" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="320" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="340" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="360" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="380" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="400" y="100" width="14" height="14" rx="1.5"/>
+            <rect class="endpoint compliant" x="420" y="100" width="14" height="14" rx="1.5"/>
+          </g>
+
+          <!-- Bottom labels: deployment rings -->
+          <g transform="translate(20, 270)">
+            <text class="label" x="0" y="0">RING 01 · PILOT</text>
+            <line x1="0" y1="8" x2="100" y2="8" stroke="#2563EB" stroke-width="2"/>
+            <text x="0" y="22" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0F172A">412 devices</text>
+
+            <text class="label" x="160" y="0">RING 02 · BROAD</text>
+            <line x1="160" y1="8" x2="280" y2="8" stroke="#2563EB" stroke-width="2"/>
+            <text x="160" y="22" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0F172A">8,221 devices</text>
+
+            <text class="label" x="320" y="0">RING 03 · GENERAL</text>
+            <line x1="320" y1="8" x2="440" y2="8" stroke="#2563EB" stroke-width="2"/>
+            <text x="320" y="22" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0F172A">11,214 devices</text>
+          </g>
+
+          <!-- Bottom status row -->
+          <g transform="translate(20, 330)">
+            <rect x="0" y="0" width="440" height="30" rx="3" fill="#F8FAFC" stroke="#E2E8F0"/>
+            <circle cx="14" cy="15" r="3" fill="#10B981"/>
+            <text x="26" y="19" font-family="IBM Plex Mono, monospace" font-size="9" fill="#0F172A" letter-spacing="0.4">PATCH POSTURE: HEALTHY</text>
+            <line x1="200" y1="6" x2="200" y2="24" stroke="#E2E8F0"/>
+            <text x="214" y="19" font-family="IBM Plex Mono, monospace" font-size="9" fill="#64748B" letter-spacing="0.4">MFA · ENFORCED   ·   CMMC L1 · TRACKED</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Trust strip ===== -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-strip__items">
+      <span>Endpoint Modernization</span>
+      <span>Patch Compliance</span>
+      <span>Enterprise Mobility</span>
+      <span>CMMC Readiness</span>
+      <span>AI-Enabled Operations</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Who we serve ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Who we serve</span>
+      <h2>Buyers who need focused technical execution.</h2>
+      <p class="lead">Timechain is built to support organizations that already know what good operations look like and need a partner who can deliver without overhead.</p>
+    </div>
+    <div class="cards cards--3">
+      <div class="card">
+        <div class="card__num">01</div>
+        <h3>Federal Agencies</h3>
+        <p>Civilian and defense agencies modernizing endpoint operations, mobility, and compliance posture under existing IT vehicles.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">02</div>
+        <h3>DoD Contractors &amp; Subcontractors</h3>
+        <p>Suppliers preparing for CMMC, FAR 52.204-21, and NIST 800-171 obligations with audit-ready evidence and remediation roadmaps.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">03</div>
+        <h3>Prime Integrators</h3>
+        <p>Primes needing low-friction subcontract support for endpoint, ITSM, and AI-enabled operations workstreams on large vehicles.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">04</div>
+        <h3>Managed Service Providers</h3>
+        <p>MSPs scaling Intune, Windows Autopatch, and UEM migration delivery with senior engineering capacity on short engagements.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">05</div>
+        <h3>Regulated Enterprises</h3>
+        <p>Financial, healthcare, and regulated organizations modernizing Microsoft endpoint environments with auditability in mind.</p>
+      </div>
+      <div class="card">
+        <div class="card__num">06</div>
+        <h3>Microsoft Endpoint Modernizers</h3>
+        <p>Teams migrating from MECM/SCCM and AirWatch/Workspace ONE to Intune, Endpoint Manager, and Windows Autopatch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Core capabilities ===== -->
+<section class="section section--subtle">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Core capabilities</span>
+      <h2>Five practice areas, end-to-end.</h2>
+      <p class="lead">Each capability is delivered as a discrete, scope-bound engagement or as subcontract support to a prime contractor.</p>
+    </div>
+    <div class="cards cards--3">
+      <div class="card card--accent-line">
+        <div class="card__num">01 · Endpoint</div>
+        <h3>Endpoint Modernization &amp; Compliance</h3>
+        <p>Microsoft Intune, Windows Autopatch, MECM/SCCM modernization, compliance policies, configuration profiles, application deployment, lifecycle governance, and patch posture improvement.</p>
+        <div style="margin-top: var(--sp-4);"><a href="capabilities.html#endpoint" class="btn btn--ghost">Detail</a></div>
+      </div>
+      <div class="card card--accent-line">
+        <div class="card__num">02 · Patch</div>
+        <h3>Patch &amp; Configuration Management</h3>
+        <p>Patch compliance stabilization, reporting, remediation workflows, deployment rings, maintenance windows, exception handling, executive dashboards, and audit-ready operational evidence.</p>
+        <div style="margin-top: var(--sp-4);"><a href="capabilities.html#patch" class="btn btn--ghost">Detail</a></div>
+      </div>
+      <div class="card card--accent-line">
+        <div class="card__num">03 · Mobility</div>
+        <h3>MDM / UEM / Enterprise Mobility</h3>
+        <p>AirWatch / Workspace ONE to Intune/UEM migration support, mobile device governance, policy/profile/app mapping, pilot planning, phased cutovers, rollback planning, and user communications.</p>
+        <div style="margin-top: var(--sp-4);"><a href="capabilities.html#mobility" class="btn btn--ghost">Detail</a></div>
+      </div>
+      <div class="card card--accent-line">
+        <div class="card__num">04 · Cyber</div>
+        <h3>CMMC / NIST / Cyber Readiness Support</h3>
+        <p>CMMC Level 1 / FAR 52.204-21 readiness support, NIST 800-171 roadmap support, endpoint evidence mapping, MFA / account-control documentation, SOP/runbook creation, remediation planning, and supplier-flowdown support.</p>
+        <div style="margin-top: var(--sp-4);"><a href="cmmc-cyber-readiness.html" class="btn btn--ghost">Detail</a></div>
+      </div>
+      <div class="card card--accent-line">
+        <div class="card__num">05 · AI Ops</div>
+        <h3>AI-Enabled IT Operations</h3>
+        <p>Private IT Ops knowledge assistant readiness, AI-assisted SOP/runbook generation, remediation playbook development, service desk workflow automation, documentation structuring, and secure AI adoption planning.</p>
+        <div style="margin-top: var(--sp-4);"><a href="ai-operations.html" class="btn btn--ghost">Detail</a></div>
+      </div>
+      <div class="card card--inverse" style="display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card__num" style="color: var(--accent-400);">Capability statement</div>
+          <h3>One-page brief for buyers and contracting officers.</h3>
+          <p>UEI, NAICS, PSC, core capabilities, differentiators, and contact information — formatted for procurement evaluation.</p>
+        </div>
+        <a href="assets/pdf/timechain-capability-statement.pdf" class="btn btn--on-dark btn--sm" style="align-self: flex-start; margin-top: var(--sp-5);" download>Download PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Why Timechain ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Timechain</span>
+      <h2>Senior delivery, evidence on the page.</h2>
+      <p class="lead">Timechain's founder brings enterprise-scale endpoint and mobility experience to small, focused engagements — without the overhead of a large systems integrator.</p>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__num">~20,000</div>
+        <div class="stat__label">Endpoints supported in production — 13,000 Windows and 7,000 iOS devices.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">90% → 97.5%</div>
+        <div class="stat__label">Patch compliance lift achieved through reporting discipline and remediation workflows.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">5,000+</div>
+        <div class="stat__label">Devices and 3,000+ users supported through MDM / UEM migration work.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__num">15+ yrs</div>
+        <div class="stat__label">IT operations experience across enterprise environments and federal-aligned delivery.</div>
+      </div>
+    </div>
+    <div style="margin-top: var(--sp-12); display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-8); border-top: 1px solid var(--border); padding-top: var(--sp-10);" class="why-grid">
+      <div>
+        <span class="eyebrow eyebrow--muted">Differentiator</span>
+        <h3>Senior-led, low-overhead delivery.</h3>
+        <p>Engagements are scoped tightly and delivered by experienced operators. No layered consulting, no padded teams — just senior execution against a defined outcome.</p>
+      </div>
+      <div>
+        <span class="eyebrow eyebrow--muted">Background</span>
+        <h3>Veteran-owned, federal-aligned.</h3>
+        <p>Founded by a U.S. Air Force veteran who previously held TS/SCI clearance during military service. Built for DoD supplier readiness, endpoint compliance, zero-trust-aligned mobility, and secure modernization.</p>
+        <p style="font-size: 0.8125rem; color: var(--steel-500); margin-top: var(--sp-3);">Founder previously held TS/SCI clearance during U.S. Air Force service. No current or facility clearance is implied.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>@media (max-width: 800px) { .why-grid { grid-template-columns: 1fr !important; } }</style>
+
+<!-- ===== Service offerings preview ===== -->
+<section class="section section--subtle">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Service offerings</span>
+      <h2>Fixed-scope engagements built for procurement.</h2>
+      <p class="lead">Each offering is a defined deliverable with a clear outcome, target buyer, and evidence package. Designed to be subcontracted under existing vehicles or executed as a direct award.</p>
+    </div>
+    <div class="cards cards--2">
+      <div class="card">
+        <div class="card__num">Service 01</div>
+        <h3>Patch Compliance Assessment + Remediation Plan</h3>
+        <p>Identify compliance gaps, isolate top failure drivers, and produce an actionable remediation plan with executive summary.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#patch" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+      <div class="card">
+        <div class="card__num">Service 02</div>
+        <h3>Intune / Windows Autopatch Readiness + Pilot Plan</h3>
+        <p>Prepare Microsoft endpoint environments for a controlled, governed rollout with rings, policies, and validation criteria.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#autopatch" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+      <div class="card">
+        <div class="card__num">Service 03</div>
+        <h3>MDM Migration Blueprint</h3>
+        <p>Plan a phased migration from legacy MDM/UEM platforms to modern endpoint management with risk register and rollback approach.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#mdm" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+      <div class="card">
+        <div class="card__num">Service 04</div>
+        <h3>CMMC Level 1 / FAR 52.204-21 Readiness Sprint</h3>
+        <p>Help contractors organize basic cyber hygiene evidence, document controls, and prioritize remediation against a control checklist.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#cmmc-l1" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+      <div class="card">
+        <div class="card__num">Service 05</div>
+        <h3>NIST 800-171 / CUI Readiness Roadmap</h3>
+        <p>Phased roadmap toward NIST 800-171 alignment for organizations handling Controlled Unclassified Information.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#nist" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+      <div class="card">
+        <div class="card__num">Service 06</div>
+        <h3>IT Ops Knowledge Assistant Readiness</h3>
+        <p>Prepare operational knowledge — runbooks, KBs, SOPs — for secure AI-assisted retrieval with structured tagging and permissions.</p>
+        <div style="margin-top: var(--sp-4);"><a href="services.html#ai-readiness" class="btn btn--ghost">View deliverables</a></div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: var(--sp-8);">
+      <a href="services.html" class="btn btn--secondary">See all service offerings</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Federal vendor snapshot ===== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Federal vendor snapshot</span>
+      <h2>The information procurement teams need first.</h2>
+      <p class="lead">All codes, identifiers, and socioeconomic status in one place. Status fields are updated as registrations complete.</p>
+    </div>
+    <div class="snapshot">
+      <div class="snapshot__title"><span>Timechain Technologies LLC · Vendor Profile</span></div>
+      <table>
+        <tr><th>UEI</th><td>HBGWBBJVYMK1</td></tr>
+        <tr><th>CAGE Code</th><td>Pending</td></tr>
+        <tr><th>SAM Status</th><td>Submitted / Pending Active</td></tr>
+        <tr><th>SDVOSB / VetCert</th><td>Pending</td></tr>
+        <tr><th>Business Type</th><td class="t-prose">Small Business · Veteran-Owned · Service-Disabled Veteran-Owned</td></tr>
+        <tr><th>Primary NAICS</th><td>541512 — Computer Systems Design Services</td></tr>
+        <tr><th>Additional NAICS</th><td>541511, 541513, 541519</td></tr>
+        <tr><th>PSC Codes</th><td>DE01, DE02, DD01, DJ01, DA01, DC01, DG01</td></tr>
+        <tr><th>Location</th><td class="t-prose">St. Peters / St. Louis, Missouri</td></tr>
+        <tr><th>Contact</th><td class="t-prose"><a href="mailto:evan@timechaintech.com" class="link">evan@timechaintech.com</a> · 314-270-2188</td></tr>
+      </table>
+    </div>
+    <div style="margin-top: var(--sp-8); text-align: center;">
+      <a href="federal-contracting.html" class="btn btn--secondary">Full federal contracting profile</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="cta-banner">
+  <div class="container cta-banner__inner">
+    <div>
+      <h2>Need a focused endpoint, compliance, or AI-enabled operations partner?</h2>
+      <p>Timechain is available for subcontract teaming, fixed-scope assessments, readiness sprints, and federal IT modernization support.</p>
+    </div>
+    <div class="cta-banner__actions">
+      <a href="assets/pdf/timechain-capability-statement.pdf" class="btn btn--primary btn--lg" download>Download Capability Statement</a>
+      <a href="contact.html" class="btn btn--on-dark btn--lg">Contact Timechain</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/logo-horizontal-light.png" alt="Timechain Technologies">
+        <div class="footer__meta">
+          <strong>Timechain Technologies LLC</strong><br>
+          St. Peters / St. Louis, Missouri<br>
+          <a href="mailto:evan@timechaintech.com">evan@timechaintech.com</a><br>
+          314-270-2188
+        </div>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="capabilities.html">Capabilities</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="federal-contracting.html">Federal Contracting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Practice areas</h4>
+        <ul>
+          <li><a href="ai-operations.html">AI-Enabled Operations</a></li>
+          <li><a href="cmmc-cyber-readiness.html">Cyber Readiness</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Vendor profile</h4>
+        <div class="footer__meta">
+          UEI: HBGWBBJVYMK1<br>
+          NAICS: 541512<br>
+          Veteran-Owned Small Business<br>
+                    <a href="assets/pdf/timechain-capability-statement.pdf" download style="color: var(--accent-400);">Capability Statement ↓</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <div>© 2026 Timechain Technologies LLC. All rights reserved.</div>
+      <div>Veteran-Owned Small Business</div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>

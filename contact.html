@@ -1,424 +1,154 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - TimeChainTech</title>
-
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Get in touch with TimeChainTech for blockchain consulting, project collaboration, or technical questions.">
-    <link rel="canonical" href="https://timechaintech.com/contact">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://timechaintech.com/contact">
-    <meta property="og:title" content="Contact TimeChainTech">
-    <meta property="og:description" content="Get in touch with TimeChainTech for blockchain consulting, project collaboration, or technical questions.">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect fill='%231a1a1a' width='32' height='32' rx='6'/%3E%3Crect fill='%23f7931a' x='4' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='20' y='4' width='8' height='8' rx='2'/%3E%3Crect fill='%23f7931a' x='12' y='20' width='8' height='8' rx='2'/%3E%3Cline x1='8' y1='12' x2='8' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='24' y1='12' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='8' y1='24' x2='12' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3Cline x1='20' y1='24' x2='24' y2='24' stroke='%23f7931a' stroke-width='2'/%3E%3C/svg%3E">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        .contact-hero {
-            padding: 140px 0 60px;
-            text-align: center;
-        }
-
-        .contact-hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 500;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff 0%, var(--gold, #D4AF37) 50%, #fff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-hero p {
-            color: var(--gray-300);
-            font-size: 1.1rem;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .contact-section {
-            padding: 4rem 0 6rem;
-        }
-
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            max-width: 900px;
-            margin: 0 auto;
-            align-items: start;
-        }
-
-        /* Hero Flourish */
-        .hero-flourish {
-            display: block;
-            font-size: 1.5rem;
-            color: var(--gold, #D4AF37);
-            margin-bottom: 1rem;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        /* Nouveau Card Contact Form */
-        .nouveau-card {
-            position: relative;
-            background: linear-gradient(145deg, rgba(15, 20, 30, 0.9), rgba(10, 15, 25, 0.95));
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 16px;
-            padding: 2.5rem;
-        }
-
-        .nouveau-card h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            color: var(--gold, #D4AF37);
-        }
-
-        /* Contact Form */
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: rgba(212, 175, 55, 0.8);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            background: rgba(10, 15, 25, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            color: var(--white, #fff);
-            font-family: var(--font-mono, 'JetBrains Mono', monospace);
-            font-size: 0.95rem;
-            padding: 0.875rem 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--gold, #D4AF37);
-            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
-        }
-
-        .form-group input::placeholder,
-        .form-group textarea::placeholder {
-            color: rgba(255, 255, 255, 0.3);
-        }
-
-        .form-group textarea {
-            min-height: 140px;
-            resize: vertical;
-            line-height: 1.6;
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--gold, #D4AF37), #F4D03F);
-            border: none;
-            border-radius: 8px;
-            color: #0a0f1a;
-            cursor: pointer;
-            font-family: 'Playfair Display', serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 0.5rem;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-
-        .submit-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .submit-btn:hover::before {
-            left: 100%;
-        }
-
-        /* Contact Info */
-        .contact-info {
-            padding-top: 1rem;
-        }
-
-        .contact-info h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-            letter-spacing: 1px;
-            margin-bottom: 1.5rem;
-            color: var(--gold, #D4AF37);
-        }
-
-        .contact-info p {
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .email-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--gold, #D4AF37);
-            font-size: 1.1rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .email-link:hover {
-            color: #F4D03F;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        .email-icon {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .contact-layout {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .contact-info {
-                order: -1;
-                padding-top: 0;
-            }
-
-            .nouveau-card {
-                padding: 2rem;
-            }
-        }
-
-        /* Minimal Footer */
-        .footer-minimal {
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 2rem 0;
-        }
-
-        .footer-minimal .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-minimal p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-nav a {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-            font-family: 'Playfair Display', serif;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-nav a:hover {
-            color: var(--gold, #D4AF37);
-        }
-
-        /* Footer Ornament */
-        .footer-ornament {
-            display: flex;
-            justify-content: center;
-            padding: 2rem 0 0;
-        }
-
-        .footer-ornament svg {
-            width: 200px;
-            height: 50px;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Timechain Technologies</title>
+  <meta name="description" content="Contact Timechain Technologies LLC for capability briefings, subcontract teaming discussions, sources-sought responses, and scoping conversations.">
+  <meta name="theme-color" content="#141B2B">
+  <link rel="icon" type="image/png" href="assets/img/logo-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <nav class="nav" role="navigation" aria-label="Main navigation">
-        <div class="nav-container">
-            <a href="index.html" class="logo" aria-label="TimeChainTech - Home">
-                <span class="logo-bracket" aria-hidden="true">[</span>
-                <span class="logo-text">TimeChainTech</span>
-                <span class="logo-bracket" aria-hidden="true">]</span>
-            </a>
-            <div class="nav-links" role="menubar">
-                <a href="index.html" class="nav-link" role="menuitem">HOME</a>
-                <a href="about.html" class="nav-link" role="menuitem">ABOUT</a>
-                <a href="solutions.html" class="nav-link" role="menuitem">SOLUTIONS</a>
-                <a href="requests.html" class="nav-link" role="menuitem">REQUESTS</a>
-                <a href="contact.html" class="nav-link active" role="menuitem" aria-current="page">CONTACT</a>
-            </div>
-        </div>
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a href="index.html" class="topbar__brand" aria-label="Timechain Technologies — Home"><img src="assets/img/logo-horizontal.png" alt="Timechain Technologies"></a>
+    <nav class="topbar__nav" aria-label="Primary">
+      <a href="capabilities.html">Capabilities</a>
+      <a href="services.html">Services</a>
+      <a href="federal-contracting.html">Federal Contracting</a>
+      <a href="ai-operations.html">AI Operations</a>
+      <a href="cmmc-cyber-readiness.html">Cyber Readiness</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
+    <div class="topbar__cta"><a href="assets/pdf/timechain-capability-statement.pdf" class="btn btn--primary btn--sm" download>Capability Statement</a></div>
+    <button class="topbar__burger" aria-label="Toggle navigation" aria-expanded="false">☰ Menu</button>
+  </div>
+</header>
 
-    <!-- Art Nouveau Decorative SVG -->
-    <svg class="nouveau-decoration" aria-hidden="true" viewBox="0 0 1440 200" preserveAspectRatio="none">
-        <path class="nouveau-curve" d="M0,100 Q360,0 720,100 T1440,100" fill="none" stroke="url(#goldGradient)" stroke-width="1"/>
-        <path class="nouveau-curve delay" d="M0,120 Q360,20 720,120 T1440,120" fill="none" stroke="url(#tealGradient)" stroke-width="0.5"/>
-        <defs>
-            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
-                <stop offset="50%" style="stop-color:#F4D03F;stop-opacity:0.6"/>
-                <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0.3"/>
-            </linearGradient>
-            <linearGradient id="tealGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
-                <stop offset="50%" style="stop-color:#5EEAD4;stop-opacity:0.4"/>
-                <stop offset="100%" style="stop-color:#2DD4BF;stop-opacity:0.2"/>
-            </linearGradient>
-        </defs>
-    </svg>
+<section class="pagehead">
+  <div class="container">
+    <div class="pagehead__breadcrumb"><a href="index.html">Home</a><span>/</span>Contact</div>
+    <h1>Contact Timechain</h1>
+    <p>For capability briefings, subcontract teaming, sources-sought responses, or scoping discussions — send a brief description of the workstream, timeline, and contract vehicle. Responses within one business day.</p>
+  </div>
+</section>
 
-    <main id="main-content" role="main">
-        <section class="contact-hero">
-            <div class="container">
-                <span class="hero-flourish" aria-hidden="true">✦</span>
-                <h1>Get in Touch</h1>
-                <p>Have a question or want to work together? I'd love to hear from you.</p>
-            </div>
-        </section>
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <aside class="contact-info">
+        <h3>Direct contact</h3>
+        <p style="margin-bottom: var(--sp-6);">Messages reach the founder directly. No call center, no routing tier.</p>
+        <dl>
+          <dt>Point of contact</dt>
+          <dd>Evan Hawkins, Founder &amp; CEO</dd>
 
-        <section class="contact-section">
-            <div class="container">
-                <div class="contact-layout">
-                    <div class="nouveau-card">
-                        <div class="card-frame" aria-hidden="true">
-                            <span class="frame-corner tl"></span>
-                            <span class="frame-corner tr"></span>
-                            <span class="frame-corner bl"></span>
-                            <span class="frame-corner br"></span>
-                            <span class="frame-edge top"></span>
-                            <span class="frame-edge bottom"></span>
-                            <span class="frame-edge left"></span>
-                            <span class="frame-edge right"></span>
-                        </div>
-                        <h2>Send a Message</h2>
-                        <form class="contact-form" action="#" method="POST">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Your name" required>
-                            </div>
+          <dt>Email</dt>
+          <dd><a href="mailto:evan@timechaintech.com">evan@timechaintech.com</a></dd>
 
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                            </div>
+          <dt>Phone</dt>
+          <dd>314-270-2188</dd>
 
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" placeholder="How can I help you?" required></textarea>
-                            </div>
+          <dt>Location</dt>
+          <dd>St. Peters / St. Louis, Missouri</dd>
 
-                            <button type="submit" class="submit-btn">Send Message</button>
-                        </form>
-                    </div>
+          <dt>Response time</dt>
+          <dd>One business day or less</dd>
+        </dl>
 
-                    <div class="contact-info">
-                        <h2>Let's Connect</h2>
-                        <p>
-                            Whether you're interested in blockchain consulting, have a project idea,
-                            or just want to chat about technology, feel free to reach out.
-                        </p>
-                        <a href="mailto:evan@timechaintech.com" class="email-link">
-                            <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="4" width="20" height="16" rx="2"/>
-                                <path d="M22 6l-10 7L2 6"/>
-                            </svg>
-                            evan@timechaintech.com
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer Ornament -->
-    <div class="footer-ornament" aria-hidden="true">
-        <svg viewBox="0 0 200 50" preserveAspectRatio="xMidYMid meet">
-            <path d="M0,25 Q50,0 100,25 T200,25" fill="none" stroke="url(#footerGold)" stroke-width="1"/>
-            <circle cx="100" cy="25" r="4" fill="var(--gold)" opacity="0.6"/>
-            <circle cx="60" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
-            <circle cx="140" cy="20" r="2" fill="var(--teal)" opacity="0.4"/>
-            <defs>
-                <linearGradient id="footerGold" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:0"/>
-                    <stop offset="50%" style="stop-color:#D4AF37;stop-opacity:0.6"/>
-                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:0"/>
-                </linearGradient>
-            </defs>
-        </svg>
-    </div>
-
-    <footer class="footer-minimal" role="contentinfo">
-        <div class="container">
-            <p>2025 TimeChainTech</p>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="solutions.html">Solutions</a>
-            </nav>
+        <div style="margin-top: var(--sp-8); padding-top: var(--sp-6); border-top: 1px solid var(--border);">
+          <h4 style="font-family: var(--ff-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-600); margin-bottom: var(--sp-3);">For Contracting Officers</h4>
+          <p style="font-size: 0.9375rem; margin-bottom: 0; color: var(--text-muted);">Sources-sought responses, capability briefings, and procurement inquiries are welcome. Vendor profile available on the <a href="federal-contracting.html" class="link">Federal Contracting</a> page.</p>
         </div>
-    </footer>
+      </aside>
 
-    <script src="script.js"></script>
+      <div>
+        <h3>Send a message</h3>
+        <p style="margin-bottom: var(--sp-6);">The form below opens your email client with a pre-formatted message addressed to <strong>evan@timechaintech.com</strong>. Or just <a href="mailto:evan@timechaintech.com" class="link">email directly</a>.</p>
+        <form class="form" data-mailto="evan@timechaintech.com">
+          <div class="form__row">
+            <div class="form__field">
+              <label for="name">Name *</label>
+              <input id="name" name="name" type="text" required>
+            </div>
+            <div class="form__field">
+              <label for="organization">Organization</label>
+              <input id="organization" name="organization" type="text">
+            </div>
+          </div>
+          <div class="form__row">
+            <div class="form__field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required>
+            </div>
+            <div class="form__field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel">
+            </div>
+          </div>
+          <div class="form__field">
+            <label for="inquiry">Inquiry type</label>
+            <select id="inquiry" name="inquiry">
+              <option value="Prime teaming / subcontracting">Prime teaming / subcontracting</option>
+              <option value="Federal contracting inquiry">Federal contracting inquiry</option>
+              <option value="Endpoint modernization">Endpoint modernization</option>
+              <option value="CMMC / NIST readiness">CMMC / NIST readiness</option>
+              <option value="AI-enabled operations">AI-enabled operations</option>
+              <option value="General inquiry">General inquiry</option>
+            </select>
+          </div>
+          <div class="form__field">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" required placeholder="Brief description of the workstream, timeline, and contract vehicle (if applicable)."></textarea>
+          </div>
+          <div style="margin-top: var(--sp-2);">
+            <button type="submit" class="btn btn--primary btn--lg">Send via email client</button>
+          </div>
+          <p style="font-size: 0.8125rem; color: var(--steel-500); margin-top: var(--sp-3); margin-bottom: 0;">Pressing send will open your default email client with the message ready to send. Your information is not stored on this site.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <img src="assets/img/logo-horizontal-light.png" alt="Timechain Technologies">
+        <div class="footer__meta">
+          <strong>Timechain Technologies LLC</strong><br>
+          St. Peters / St. Louis, Missouri<br>
+          <a href="mailto:evan@timechaintech.com">evan@timechaintech.com</a><br>
+          314-270-2188
+        </div>
+      </div>
+      <div><h4>Site</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="capabilities.html">Capabilities</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="federal-contracting.html">Federal Contracting</a></li>
+      </ul></div>
+      <div><h4>Practice areas</h4><ul>
+        <li><a href="ai-operations.html">AI-Enabled Operations</a></li>
+        <li><a href="cmmc-cyber-readiness.html">Cyber Readiness</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Vendor profile</h4><div class="footer__meta">
+        UEI: HBGWBBJVYMK1<br>NAICS: 541512<br>Veteran-Owned Small Business<br>        <a href="assets/pdf/timechain-capability-statement.pdf" download style="color: var(--accent-400);">Capability Statement ↓</a>
+      </div></div>
+    </div>
+    <div class="footer__bar"><div>© 2026 Timechain Technologies LLC. All rights reserved.</div><div>Veteran-Owned Small Business</div></div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js"></script>
 </body>
 </html>

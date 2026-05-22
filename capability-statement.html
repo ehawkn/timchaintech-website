@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Timechain Technologies — Capability Statement</title>
+<style>
+/* CAPABILITY STATEMENT — Single page, US Letter, wkhtmltopdf-optimized */
+@page { size: letter; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 9pt; line-height: 1.35; color: #1A1A1A;
+  background: #FFFFFF; width: 8.5in; height: 11in;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact;
+}
+.page {
+  width: 8.5in; height: 11in; position: relative; overflow: hidden;
+}
+/* Header — full-bleed navy strip */
+.header {
+  background: #141B2B; color: #FFFFFF;
+  padding: 16pt 36pt 14pt; width: 100%;
+  display: table; table-layout: fixed;
+}
+.header__left, .header__right { display: table-cell; vertical-align: top; }
+.header__left { width: 60%; }
+.header__right { width: 40%; text-align: right; vertical-align: middle; }
+.header__accent {
+  display: inline-block; background: #2563EB; color: #FFFFFF;
+  padding: 2pt 7pt; font-family: 'IBM Plex Mono', monospace;
+  font-size: 6.5pt; letter-spacing: 0.14em; margin-bottom: 5pt;
+  text-transform: uppercase; font-weight: 500;
+}
+.header__name {
+  font-size: 18pt; font-weight: 700; letter-spacing: -0.015em;
+  line-height: 1; margin-bottom: 3pt;
+}
+.header__tagline {
+  font-size: 8.5pt; color: rgba(255,255,255,0.78); letter-spacing: 0.02em;
+}
+.header__contact {
+  font-family: 'IBM Plex Mono', monospace; font-size: 7.5pt;
+  color: rgba(255,255,255,0.88); line-height: 1.6;
+}
+.header__contact strong { color: #FFFFFF; }
+/* Content area — internal padding only */
+.content { padding: 12pt 36pt 0; }
+/* Snapshot strip */
+.snapshot {
+  display: table; width: 100%; margin-bottom: 11pt;
+  border: 1pt solid #E2E8F0; border-collapse: collapse; table-layout: fixed;
+}
+.snapshot__cell {
+  display: table-cell; padding: 6pt 8pt;
+  border-right: 1pt solid #E2E8F0; vertical-align: top;
+}
+.snapshot__cell:last-child { border-right: none; }
+.snapshot__label {
+  font-family: 'IBM Plex Mono', monospace; font-size: 6pt;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: #64748B; margin-bottom: 2pt; display: block;
+}
+.snapshot__value {
+  font-family: 'IBM Plex Mono', monospace; font-weight: 500;
+  color: #141B2B; font-size: 8pt;
+}
+/* Two-column body */
+.body { display: table; width: 100%; table-layout: fixed; }
+.col { display: table-cell; vertical-align: top; width: 50%; }
+.col--left { padding-right: 9pt; }
+.col--right { padding-left: 9pt; }
+/* Sections */
+.section { margin-bottom: 9pt; }
+.section__head {
+  border-top: 1.5pt solid #141B2B; padding-top: 4pt; margin-bottom: 4pt;
+}
+.section__eyebrow {
+  font-family: 'IBM Plex Mono', monospace; font-size: 6pt;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: #2563EB; margin-bottom: 1pt; display: block;
+}
+.section__title {
+  font-size: 10pt; font-weight: 700; color: #141B2B;
+  letter-spacing: -0.01em; line-height: 1.2;
+}
+p { margin-bottom: 4pt; color: #334155; font-size: 8pt; line-height: 1.4; }
+p:last-child { margin-bottom: 0; }
+strong { color: #141B2B; font-weight: 600; }
+/* Bullet list */
+ul.flat { list-style: none; margin-bottom: 4pt; }
+ul.flat li {
+  padding-left: 9pt; position: relative; margin-bottom: 2pt;
+  font-size: 7.5pt; line-height: 1.35; color: #334155;
+}
+ul.flat li::before {
+  content: ""; position: absolute; left: 0; top: 5pt;
+  width: 5pt; height: 1pt; background: #2563EB;
+}
+/* Competency blocks */
+.comp-block { margin-bottom: 5pt; }
+.comp-block__title {
+  font-size: 8pt; font-weight: 600; color: #141B2B; margin-bottom: 1pt;
+}
+.comp-block__desc {
+  font-size: 7pt; color: #475569; line-height: 1.4; margin-bottom: 0;
+}
+/* Code tables */
+.code-table {
+  width: 100%; font-family: 'IBM Plex Mono', monospace;
+  font-size: 7pt; border-collapse: collapse; margin-bottom: 2pt;
+}
+.code-table td { padding: 2pt 0; border-bottom: 0.5pt solid #E2E8F0; }
+.code-table tr:last-child td { border-bottom: none; }
+.code-table .code { width: 50pt; color: #2563EB; font-weight: 500; }
+.code-table .desc {
+  color: #334155; font-family: 'IBM Plex Sans', sans-serif; font-size: 7pt;
+}
+.code-table .primary .code { font-weight: 700; color: #1D4ED8; }
+.code-table .primary .desc { font-weight: 600; }
+/* Differentiator items */
+.diff-item {
+  font-size: 7.5pt; color: #334155; margin-bottom: 3pt;
+  line-height: 1.35; padding-left: 8pt; position: relative;
+}
+.diff-item::before {
+  content: ""; position: absolute; left: 0; top: 3.5pt;
+  width: 4pt; height: 4pt; background: #2563EB; border-radius: 50%;
+}
+.diff-item strong { color: #141B2B; }
+/* Footer — fixed at page bottom for wkhtmltopdf */
+.footer {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 8pt 36pt 12pt; border-top: 1pt solid #E2E8F0;
+  font-size: 6.5pt; font-family: 'IBM Plex Mono', monospace;
+  color: #64748B; letter-spacing: 0.04em;
+  display: table; width: 100%; background: #F8FAFC;
+}
+.footer__left, .footer__right { display: table-cell; }
+.footer__right { text-align: right; }
+.footer strong { color: #141B2B; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div class="header__left">
+    <div class="header__accent">Capability Statement · 2026</div>
+    <div class="header__name">TIMECHAIN TECHNOLOGIES</div>
+    <div class="header__tagline">Secure IT Modernization for Federal, Defense, and Regulated Operations</div>
+  </div>
+  <div class="header__right">
+    <div class="header__contact">
+      <strong>Evan Hawkins</strong> · Founder &amp; CEO<br>
+      evan@timechaintech.com<br>
+      314-270-2188 · St. Peters, MO<br>
+      timechaintech.com
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+<div class="snapshot">
+  <div class="snapshot__cell"><span class="snapshot__label">UEI</span><span class="snapshot__value">HBGWBBJVYMK1</span></div>
+  <div class="snapshot__cell"><span class="snapshot__label">CAGE Code</span><span class="snapshot__value">Pending</span></div>
+  <div class="snapshot__cell"><span class="snapshot__label">SAM Status</span><span class="snapshot__value">Pending Active</span></div>
+  <div class="snapshot__cell"><span class="snapshot__label">Socioeconomic</span><span class="snapshot__value">VOSB · SDVOSB Pending</span></div>
+  <div class="snapshot__cell"><span class="snapshot__label">Primary NAICS</span><span class="snapshot__value">541512</span></div>
+</div>
+
+<div class="body">
+
+<div class="col col--left">
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">01 / Company Overview</span>
+      <div class="section__title">Who We Are</div>
+    </div>
+    <p>Timechain Technologies LLC is a veteran-owned small business focused on practical IT modernization, endpoint operations, cyber readiness, and AI-enabled workflow improvement for federal, defense, and regulated organizations.</p>
+    <p>The company is positioned for low-friction subcontract support, fixed-scope assessments, readiness sprints, and rapid technical execution. Founded by a U.S. Air Force veteran with 15+ years of enterprise IT operations experience supporting ~20,000 endpoints across Windows and iOS environments.</p>
+  </div>
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">02 / Core Competencies</span>
+      <div class="section__title">Practice Areas</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-block__title">Endpoint Modernization &amp; Compliance</div>
+      <div class="comp-block__desc">Microsoft Intune, Endpoint Manager, Windows Autopatch, MECM/SCCM modernization. Compliance policies, configuration profiles, application deployment, lifecycle governance, patch posture.</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-block__title">Patch Compliance &amp; Remediation</div>
+      <div class="comp-block__desc">Compliance baseline, failure-driver analysis, remediation workflows, deployment ring strategy, executive reporting, audit-ready operational evidence.</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-block__title">Enterprise Mobility / MDM / UEM</div>
+      <div class="comp-block__desc">AirWatch / Workspace ONE to Intune / UEM migration. Pilot design, policy / profile / app mapping, phased cutovers, rollback planning.</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-block__title">CMMC / NIST / Cyber Readiness</div>
+      <div class="comp-block__desc">CMMC L1 / FAR 52.204-21 readiness, NIST 800-171 roadmap support, endpoint evidence mapping, MFA documentation, SOP/runbook creation, supplier flowdown.</div>
+    </div>
+    <div class="comp-block">
+      <div class="comp-block__title">AI-Enabled IT Operations</div>
+      <div class="comp-block__desc">Private knowledge assistant readiness, AI-assisted SOP/runbook generation, service desk workflow automation, documentation structuring, secure AI adoption planning.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">03 / Differentiators</span>
+      <div class="section__title">Why Timechain</div>
+    </div>
+    <div class="diff-item"><strong>~20,000 endpoints</strong> supported in enterprise production (13K Windows / 7K iOS).</div>
+    <div class="diff-item"><strong>90% → 97.5%</strong> patch compliance lift through reporting discipline and remediation workflows.</div>
+    <div class="diff-item"><strong>5,000+ devices, 3,000+ users</strong> supported through MDM / UEM migration.</div>
+    <div class="diff-item"><strong>Senior-led, low-overhead delivery</strong> — the person scoping is the person delivering.</div>
+    <div class="diff-item"><strong>Veteran-owned</strong>, federal-aligned, structured for DoD supplier readiness.</div>
+    <div class="diff-item"><strong>Microsoft endpoint stack</strong> — Intune, Autopatch, MECM, plus AirWatch / Workspace ONE migration history.</div>
+  </div>
+
+</div>
+
+<div class="col col--right">
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">04 / Representative Service Offerings</span>
+      <div class="section__title">Fixed-Scope Engagements</div>
+    </div>
+    <ul class="flat">
+      <li><strong>Patch Compliance Assessment</strong> + remediation plan</li>
+      <li><strong>Intune / Windows Autopatch</strong> readiness + pilot plan</li>
+      <li><strong>MDM Migration Blueprint</strong> (AirWatch / Workspace ONE → Intune)</li>
+      <li><strong>CMMC L1 / FAR 52.204-21</strong> readiness sprint</li>
+      <li><strong>NIST 800-171 / CUI</strong> readiness roadmap</li>
+      <li><strong>IT Ops Knowledge Assistant</strong> readiness</li>
+      <li><strong>AI Workflow Automation</strong> for service desk / endpoint ops</li>
+      <li><strong>Endpoint Modernization</strong> subcontract support</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">05 / NAICS Codes</span>
+      <div class="section__title">Classifications</div>
+    </div>
+    <table class="code-table">
+      <tr class="primary"><td class="code">541512</td><td class="desc">Computer Systems Design Services (Primary)</td></tr>
+      <tr><td class="code">541511</td><td class="desc">Custom Computer Programming Services</td></tr>
+      <tr><td class="code">541513</td><td class="desc">Computer Facilities Management Services</td></tr>
+      <tr><td class="code">541519</td><td class="desc">Other Computer Related Services</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">06 / PSC Codes</span>
+      <div class="section__title">Product / Service Codes</div>
+    </div>
+    <table class="code-table">
+      <tr><td class="code">DE01</td><td class="desc">IT/Telecom: End User Support</td></tr>
+      <tr><td class="code">DE02</td><td class="desc">IT/Telecom: Mobile Device Support</td></tr>
+      <tr><td class="code">DD01</td><td class="desc">IT/Telecom: Service Delivery Support</td></tr>
+      <tr><td class="code">DJ01</td><td class="desc">IT/Telecom: Security &amp; Compliance Support</td></tr>
+      <tr><td class="code">DA01</td><td class="desc">IT/Telecom: Application Development Support</td></tr>
+      <tr><td class="code">DC01</td><td class="desc">IT/Telecom: Data Center Support</td></tr>
+      <tr><td class="code">DG01</td><td class="desc">IT/Telecom: Network Support</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section__head">
+      <span class="section__eyebrow">07 / Target Customers &amp; Teaming Fit</span>
+      <div class="section__title">Buyers &amp; Partners</div>
+    </div>
+    <ul class="flat">
+      <li>Federal agencies (civilian and defense) modernizing endpoint and mobility</li>
+      <li>DoD contractors and subcontractors preparing for CMMC / FAR 52.204-21</li>
+      <li>Prime integrators needing senior subcontract capacity on task orders</li>
+      <li>Managed service providers scaling Intune, Autopatch, and UEM delivery</li>
+      <li>Regulated enterprises modernizing Microsoft endpoint environments</li>
+    </ul>
+  </div>
+
+</div>
+
+</div>
+</div>
+
+<div class="footer">
+  <div class="footer__left">
+    <strong>TIMECHAIN TECHNOLOGIES LLC</strong> · UEI HBGWBBJVYMK1 · Veteran-Owned Small Business
+  </div>
+  <div class="footer__right">
+    Compliance: Readiness &amp; implementation support. Not an official CMMC assessor / C3PAO.
+  </div>
+</div>
+
+</div>
+</body>
+</html>
